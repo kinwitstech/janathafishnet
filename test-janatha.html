@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Janatha Fish Nets</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Nohemi:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Satoshi:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    h1 {
+      font-family: 'Nohemi', sans-serif;
+    }
+
+    h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      ;
+    }
+
+    p,
+    body {
+      font-family: 'Satoshi', sans-serif;
+    }
+
+    /* General Styles */
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+      overflow-y: scroll;
+      /* Enables scrolling */
+      scrollbar-width: none;
+    }
+
+    html::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Header Section */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: transparent;
+      /* Transparent background */
+      z-index: 1000;
+      box-shadow: none;
+      /* Remove shadow for transparency */
+      padding: 20px 0;
+      /* Increased padding for height */
+      transition: all 0.3s ease;
+      /* Smooth transition */
+    }
+
+    .header-container {
+      width: 90%;
+      max-width: 1200px;
+      /* Same as .container */
+      margin: 0 auto;
+      /* Center the container */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      background: transparent;
+      /* Transparent background */
+      color: #fff;
+      margin-bottom: 20px;
+      /* Space between header and main content */
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      /* Thin border bottom */
+    }
+
+    /* Sticky Header */
+    header.sticky {
+      background: rgba(30, 60, 114, 0.95);
+      /* Darker semi-transparent background */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      /* Add shadow for depth */
+    }
+
+    header.sticky .header-container {
+      display: none;
+      /* Hide header-container when sticky */
+    }
+
+    header.sticky .container {
+      padding: 10px 0;
+      /* Adjust padding for sticky header */
+    }
+
+    .header-contact,
+    .header-social {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    .header-social {
+      gap: 20px;
+    }
+
+    .header-contact {
+      gap: 50px;
+    }
+
+    .header-contact li,
+    .header-social li {
+      font-size: 0.9rem;
+    }
+
+    .header-social a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    .header-social a:hover {
+      color: #99ccff;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: #fff;
+      /* White text for better visibility */
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #99ccff;
+      /* Light blue on hover */
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('boat2.jpg') no-repeat center center/cover;
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .company-name {
+      font-size: 14rem;
+      font-weight: 900;
+      font-family: 'Nohemi', sans-serif;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 1;
+      background-image: url('net1.jpeg');
+      background-size: cover;
+      background-position: center;
+      color: transparent;
+      font-weight: bold;
+    }
+
+    /* @keyframes fadeOut {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      80% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.2);
+      }
+    } */
+
+    .hero-content {
+      opacity: 0;
+      animation: fadeInUp 1s ease-in-out 3s forwards;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+    }
+
+    /* @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, calc(-50% + 20px));
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+    } */
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+      font-family: 'Nohemi', sans-serif;
+      color: #fff;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: #fff;
+    }
+
+    /* About Us Section */
+    .about {
+      width: 100%;
+      padding: 80px 0;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .about h2 {
+      align-self: end;
+      font-size: 12rem;
+      font-weight: bold;
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(30, 60, 114, 0.2);
+      z-index: 1;
+      white-space: nowrap;
+      pointer-events: none;
+      margin: 0;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .about .container {
+      width: 100%;
+      max-width: 100%;
+      padding: 0 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .about-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      /* Reduced gap to prevent overflow */
+      max-width: 1200px;
+      width: 100%;
+      margin: 40px auto;
+      text-align: left;
+    }
+
+    body,
+    html {
+      overflow-x: hidden;
+    }
+
+    .text {
+      flex: 1;
+    }
+
+    .text h3 {
+      font-size: 1.8rem;
+      color: #1e3c72;
+      margin-bottom: 15px;
+    }
+
+    .text p,
+    .text ul {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .text ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .text li {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .text li::before {
+      content: "✔";
+      color: #1e3c72;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .image {
+      flex: 1;
+      text-align: center;
+      height: 500px;
+      /* Ensures a consistent height */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      /* Ensure it takes full width of parent */
+    }
+
+    .image img {
+      width: 100%;
+      /* Allow the image to take full width of .image */
+      height: 100%;
+      /* Ensure full height */
+      object-fit: cover;
+      /* Crop to fit without stretching */
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .team-section {
+      width: 100%;
+      text-align: center;
+      margin-top: 80px;
+      border: 1px solid;
+    }
+
+    .team-section h2 {
+      font-size: 2.5rem;
+      color: #1e3c72;
+      margin-bottom: 40px;
+    }
+
+    .team-cards {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .team-card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 300px;
+      /* border: 1px solid; */
+    }
+
+    .team-card img {
+      width: 100%;
+      max-width: 200px;
+      height: 200px;
+      object-fit: cover;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+    }
+
+    /* Products Section */
+    .products {
+      width: 100vw;
+      padding: 80px 0;
+      position: relative;
+      overflow-x: hidden;
+      /* Prevent horizontal scrolling */
+    }
+
+    .products .container {
+      width: 100%;
+      max-width: 100vw;
+      padding: 0 20px;
+      box-sizing: border-box;
+      flex-direction: column;
+    }
+
+    .products h2 {
+      align-self: end;
+      font-size: 12rem;
+      font-weight: bold;
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(30, 60, 114, 0.2);
+      z-index: 1;
+      white-space: nowrap;
+      pointer-events: none;
+      margin: 0;
+      /* Keeps it above the background text */
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto;
+      gap: 20px;
+      width: 100%;
+      max-width: 100vw;
+      margin: 40px auto;
+      /* Ensure it doesn’t exceed viewport width */
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .grid-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eee;
+      border-radius: 10px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.4s ease-in-out;
+      border: 1px solid;
+
+    }
+
+    .large {
+      grid-column: span 2;
+      grid-row: span 2;
+      height: 300px;
+    }
+
+    .medium {
+      grid-column: span 2;
+      grid-row: span 1;
+      height: 200px;
+    }
+
+    .small {
+      grid-column: span 1;
+      grid-row: span 1;
+      height: 150px;
+    }
+
+    .grid-item.expanded {
+      grid-column: span 4 !important;
+      grid-row: span 2 !important;
+      height: 400px !important;
+    }
+
+    .grid-item h3 {
+      font-size: 1.5rem;
+      color: #1e3c72;
+    }
+
+    /* testimonials section */
+    .testimonials {
+      padding: 80px 0;
+      background: #f9f9f9;
+      text-align: center;
+      position: relative;
+    }
+
+    .testimonials .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonials h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #1e3c72;
+    }
+
+    .testimonial-wrapper {
+      width: 880px;
+      /* Make sure this matches the visible area */
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+    }
+
+    .testimonial-grid {
+      display: flex;
+      gap: 40px;
+      transition: transform 0.5s ease-in-out;
+      padding: 20px 0;
+      width: max-content;
+      /* Ensures the grid expands as needed */
+    }
+
+    .testimonial-item {
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 400px;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 0 0 auto;
+    }
+
+    .testimonial-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .testimonial-item p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .testimonial-item span {
+      font-size: 1rem;
+      color: #1e3c72;
+      font-weight: 500;
+      display: block;
+      margin-top: 10px;
+    }
+
+    .arrow {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #1e3c72;
+      transition: color 0.3s ease;
+      padding: 10px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    .arrow:hover {
+      color: #555;
+    }
+
+    .arrow:disabled {
+      color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .left-arrow {
+      left: 20px;
+    }
+
+    .right-arrow {
+      right: 20px;
+    }
+
+    /* Get a Quote Section */
+    .quote {
+      padding: 80px 10%;
+      background: linear-gradient(to right, #f9f9f9, #e6ecf5);
+      display: flex;
+      justify-content: center;
+    }
+
+    .quote .container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 1000px;
+      gap: 60px;
+    }
+
+    .quote-text {
+      flex: 1;
+      text-align: left;
+    }
+
+    .quote-text h2 {
+      font-size: 2.5rem;
+      color: #1e3c72;
+      margin-bottom: 20px;
+    }
+
+    .quote-text p {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .quote-form {
+      flex: 1;
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 450px;
+      /* Prevents the form from stretching */
+      width: 100%;
+    }
+
+    .quote-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .quote-form input,
+    .quote-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: 0.3s ease-in-out;
+      box-sizing: border-box;
+      /* Fixes input overflow */
+    }
+
+    .quote-form input:focus,
+    .quote-form textarea:focus {
+      border-color: #1e3c72;
+      outline: none;
+      box-shadow: 0 0 5px rgba(30, 60, 114, 0.3);
+    }
+
+    .quote-form textarea {
+      height: 120px;
+      resize: none;
+    }
+
+    .quote-form button {
+      width: 100%;
+      padding: 12px;
+      background: #1e3c72;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+    }
+
+    .quote-form button:hover {
+      background: #2a5298;
+    }
+
+    /* Footer Section */
+    footer {
+      background: #1e3c72;
+      color: #fff;
+      padding-top: 10rem;
+      padding-bottom: 6rem;
+    }
+
+    footer .container {
+      flex-direction: column;
+    }
+
+    .footer-content {
+      margin-bottom: 5rem;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    footer h3 {
+      font-size: 1.2rem;
+      line-height: 1.3;
+      text-transform: uppercase;
+      letter-spacing: 0.25rem;
+      color: #cc147f;
+      margin-bottom: 2.1rem;
+    }
+
+    footer h3::before {
+      content: "/ ";
+    }
+
+    footer .contact-email {
+      font-size: 2rem;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    footer .contact-phone {
+      font-size: 1.5rem;
+      line-height: 1.5;
+      margin-top: 4rem
+    }
+
+    footer .contact-address {
+      font-size: 1.5rem;
+      line-height: 1rem;
+    }
+
+    footer a:hover {
+      color: #99ccff;
+    }
+
+    footer .contact h3,
+    footer .social h3 {
+      font-size: 1.2rem;
+      line-height: 1.3;
+      letter-spacing: 0.25rem;
+      margin-bottom: 2rem;
+    }
+
+    footer .social a {
+      font-size: 3rem;
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 1rem;
+      align-self: flex-start;
+    }
+
+    .footer-watermark {
+      position: absolute;
+      font-size: 13rem;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.03);
+      letter-spacing: 1rem;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+      }
+
+      .bento-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      }
+
+      .product-item.large,
+      .product-item.wide {
+        grid-column: span 1;
+      }
+
+      .product-item.tall {
+        grid-row: span 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="header-container">
+      <ul class="header-contact">
+        <li>janata@gmail.com</li>
+        <li>+91-977-587-3874</li>
+      </ul>
+      <ul class="header-social">
+        <li>
+          <a href="https://instagram.com/kinwitstechnologies" target="_blank" rel="noopener noreferrer"
+            aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://linkedin.com/company/kinwits" target="_blank" rel="noopener noreferrer"
+            aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="logo">
+        <img src="logo.png" alt="Janatha Fish Nets Logo">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="company-name">JANATHA</div>
+      <div class="hero-content">
+        <h1>Engineered for the Perfect Catch.</h1>
+        <p>Premium fishing nets engineered for durability, efficiency, and the perfect catch—every time.</p>
+      </div>
+      <!-- <button class="quote-btn" onclick="document.getElementById('quote').scrollIntoView({ behavior: 'smooth' })">
+        GET A QUOTE
+      </button> -->
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2>ABOUT US</h2>
+      <div class="about-section">
+        <div class="text">
+          <h3>Why We Do This</h3>
+          <p>Fishing is more than a job—it’s a way of life. We build high-quality, durable fishing nets designed to
+            withstand the toughest waters, helping our customers fish smarter and more efficiently.</p>
+        </div>
+        <div class="image">
+          <img src="boat2.jpg" alt="Fishing net in action">
+        </div>
+      </div>
+
+      <div class="about-section">
+        <div class="image">
+          <img src="boat2.jpg" alt="Durable fishing net">
+        </div>
+        <div class="text">
+          <h3>Our Commitment</h3>
+          <ul>
+            <li><strong>Strength & Durability</strong> – Nets built to last, season after season.</li>
+            <li><strong>Precision Craftsmanship</strong> – Designed with expertise for maximum performance.</li>
+            <li><strong>Customer First</strong> – Reliable gear, backed by people who care.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <div class="text">
+          <h3>How We Make a Difference</h3>
+          <p>From small-scale fishers to large commercial fleets, we provide solutions that keep the industry moving
+            forward. Because when your nets work better, so do you.</p>
+        </div>
+        <div class="image">
+          <img src="boat2.jpg" alt="Fishermen using our nets">
+        </div>
+      </div>
+      <div class="team-section">
+        <h2>Meet the Team</h2>
+        <div class="team-cards">
+          <div class="team-card">
+            <img src="boat2.jpg" alt="Team Member 1">
+            <h3>John Doe</h3>
+            <p>Founder & CEO</p>
+          </div>
+          <div class="team-card">
+            <h3>Jane Smith</h3>
+            <p>Lead Engineer</p>
+            <img src="boat2.jpg" alt="Team Member 2">
+          </div>
+          <div class="team-card">
+            <img src="boat2.jpg" alt="Team Member 3">
+            <h3>Mike Johnson</h3>
+            <p>Operations Manager</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="products">
+    <div class="container">
+      <h2>PRODUCTS</h2>
+      <div class="bento-grid">
+        <div class="grid-item large" onclick="expandItem(this)">
+          <h3>Product 1</h3>
+        </div>
+        <div class="grid-item medium" onclick="expandItem(this)">
+          <h3>Product 2</h3>
+        </div>
+        <div class="grid-item small" onclick="expandItem(this)">
+          <h3>Product 3</h3>
+        </div>
+        <div class="grid-item medium" onclick="expandItem(this)">
+          <h3>Product 4</h3>
+        </div>
+        <div class="grid-item large" onclick="expandItem(this)">
+          <h3>Product 5</h3>
+        </div>
+        <div class="grid-item small" onclick="expandItem(this)">
+          <h3>Product 6</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <h2>What Our Customers Say</h2>
+      <button class="arrow left-arrow" aria-label="Previous Testimonial" onclick="prevTestimonial()" id="leftArrow"
+        disabled>
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <div class="testimonial-wrapper">
+        <div class="testimonial-grid" id="testimonial-slider">
+          <div class="testimonial-item">
+            <div class="testimonial-content">
+              <p>"Janatha Fish Nets are the best in the market! Highly durable and eco-friendly."</p>
+              <span>- Customer A</span>
+            </div>
+          </div>
+          <div class="testimonial-item">
+            <div class="testimonial-content">
+              <p>"Great customer service and quality products. Highly recommended!"</p>
+              <span>- Customer B</span>
+            </div>
+          </div>
+          <div class="testimonial-item">
+            <div class="testimonial-content">
+              <p>"The nets are strong and reliable. Perfect for professional fishing."</p>
+              <span>- Customer C</span>
+            </div>
+          </div>
+          <div class="testimonial-item">
+            <div class="testimonial-content">
+              <p>"Excellent quality and timely delivery. Very satisfied with the service."</p>
+              <span>- Customer D</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="arrow right-arrow" aria-label="Next Testimonial" onclick="nextTestimonial()" id="rightArrow">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- Get a Quote Section -->
+  <section id="quote" class="quote">
+    <div class="container">
+
+      <!-- Left Side - Text -->
+      <div class="quote-text">
+        <h2>Get a Quote</h2>
+        <p>Looking for high-quality fishing nets? Tell us what you need, and we'll get back to you with a tailored
+          solution.</p>
+      </div>
+
+      <!-- Right Side - Form -->
+      <div class="quote-form">
+        <form>
+          <input type="text" placeholder="Your Name" maxlength="50" required
+            oninvalid="this.setCustomValidity('Oops! We need your name to reach out.')"
+            oninput="this.setCustomValidity('')">
+
+          <input type="email" placeholder="Your Email" maxlength="50" required
+            oninvalid="this.setCustomValidity('Please enter a valid email so we can contact you.')"
+            oninput="this.setCustomValidity('')">
+
+          <textarea placeholder="Your Message" maxlength="500" required></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo" id="contact">
+          <h1>JANATHA</h>
+        </div>
+        <div class="contact" id="contact">
+          <h3>CONTACT US</h3>
+          <p class="contact-email">info@janathafishnets.com</p>
+          <p class="contact-phone">+123 456 7890</p>
+          <p class="contact-address">123 Fishing Lane, Coastal City</p>
+        </div>
+        <div class="social">
+          <h3>FOLLOW US</h3>
+          <ul class="header-social">
+            <li>
+              <a href="https://instagram.com/kinwitstechnologies" target="_blank" rel="noopener noreferrer"
+                aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/company/kinwits" target="_blank" rel="noopener noreferrer"
+                aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <span>
+          Copyright ©
+          <script>document.write(new Date().getFullYear());</script> All rights reserved by <a
+            href="https://janatha.com" target="_blank" rel="noopener noreferrer">JANATHA</a><i class="fa fa-heart"
+            aria-hidden="true"></i>
+        </span>
+      </div>
+      <p class="footer-watermark">JANATHA</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Sticky Header -->
+  <script>
+    const header = document.querySelector('header');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) { // Adjust the scroll threshold as needed
+        header.classList.add('sticky');
+      } else {
+        header.classList.remove('sticky');
+      }
+    });
+
+    let currentIndex = 0;
+    const testimonials = document.querySelectorAll(".testimonial-item");
+    const slider = document.getElementById("testimonial-slider");
+    const leftArrow = document.getElementById("leftArrow");
+    const rightArrow = document.getElementById("rightArrow");
+    const testimonialWrapper = document.querySelector(".testimonial-wrapper");
+
+    // Get testimonial width dynamically
+    function getMoveDistance() {
+      return testimonials[0].offsetWidth + 40; // Width + gap
+    }
+
+    function updateSlider() {
+      let moveDistance = getMoveDistance();
+      let maxIndex = testimonials.length - Math.floor(testimonialWrapper.offsetWidth / moveDistance);
+
+      slider.style.transform = `translateX(-${currentIndex * moveDistance}px)`;
+
+      leftArrow.disabled = currentIndex === 0;
+      rightArrow.disabled = currentIndex >= maxIndex;
+    }
+
+    function nextTestimonial() {
+      let moveDistance = getMoveDistance();
+      let maxIndex = testimonials.length - Math.floor(testimonialWrapper.offsetWidth / moveDistance);
+
+      if (currentIndex < maxIndex) {
+        currentIndex++;
+        updateSlider();
+      }
+    }
+
+    function prevTestimonial() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateSlider();
+      }
+    }
+
+    // Initialize on load & update on resize
+    window.addEventListener("resize", updateSlider);
+    updateSlider();
+
+    function expandItem(item) {
+      document.querySelectorAll('.grid-item').forEach(el => el.classList.remove('expanded'));
+      item.classList.add('expanded');
+    }
+    function collapseProduct(element) {
+      element.classList.remove('expanded');
+      element.onclick = function () { expandProduct(element); };
+    }
+  </script>
+</body>
+
+</html>

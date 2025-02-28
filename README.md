@@ -1,2 +1,2 @@
 # janathafishnet
-Official code base of Jantha Fish Net portfolio website
+The source code for Janatha fish net official home website, representing our brand and story.
