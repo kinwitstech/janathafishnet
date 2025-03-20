@@ -1,0 +1,14 @@
+1. hero section -
+	navbar - links and logo with background.
+	3 videos
+2. about us -
+	get some description from sheethals document
+        values, vision, mission
+	our promise - quality, cust satisfaction, data driven approach from document
+3. products -
+	make it as drop down seperate page for all products + add bento grid in products page for each type of products.
+
+4. get a quote - popup
+5. leadership team - chairman, managing director, executive director + message
+
+footer - same

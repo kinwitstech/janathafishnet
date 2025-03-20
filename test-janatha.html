@@ -40,58 +40,43 @@
       display: none;
     }
 
-    /* Header Section */
+    /* Header section */
     header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background: transparent;
-      /* Transparent background */
+      background: #EFEFEF;
       z-index: 1000;
-      box-shadow: none;
-      /* Remove shadow for transparency */
-      padding: 20px 0;
-      /* Increased padding for height */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
-      /* Smooth transition */
     }
 
     .header-container {
       width: 90%;
       max-width: 1200px;
-      /* Same as .container */
-      margin: 0 auto;
-      /* Center the container */
+      margin: 0 auto 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px 0;
-      background: transparent;
-      /* Transparent background */
-      color: #fff;
-      margin-bottom: 20px;
-      /* Space between header and main content */
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      /* Thin border bottom */
+      background: #EFEFEF;
+      color: black;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .header-container a:hover {
+      color: #D3509C;
     }
 
     /* Sticky Header */
     header.sticky {
-      background: rgba(30, 60, 114, 0.95);
-      /* Darker semi-transparent background */
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      /* Add shadow for depth */
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
 
     header.sticky .header-container {
-      display: none;
-      /* Hide header-container when sticky */
-    }
-
-    header.sticky .container {
-      padding: 10px 0;
-      /* Adjust padding for sticky header */
+      display: flex;
     }
 
     .header-contact,
@@ -113,16 +98,17 @@
     .header-contact li,
     .header-social li {
       font-size: 0.9rem;
+      color: black;
     }
 
     .header-social a {
-      color: #fff;
+      color: black;
       text-decoration: none;
       font-size: 1.2rem;
     }
 
     .header-social a:hover {
-      color: #99ccff;
+      color: #D3509C;
     }
 
     .container {
@@ -142,113 +128,274 @@
     nav ul {
       list-style: none;
       display: flex;
-      gap: 20px;
       margin: 0;
       padding: 0;
+      gap: 30px;
+      /* Space between nav items */
+    }
+
+    nav ul li {
+      position: relative;
     }
 
     nav ul li a {
-      color: #fff;
-      /* White text for better visibility */
+      color: black;
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease-in-out;
+      display: inline-block;
     }
 
+    /* Soft bounce animation on hover */
     nav ul li a:hover {
-      color: #99ccff;
-      /* Light blue on hover */
+      color: #D3509C;
+      transform: translateY(-2px);
+      /* Moves up slightly */
+    }
+
+    /* Menu Item with Dropdown Arrow */
+    .menu-item {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      /* Space between text and arrow */
+      text-decoration: none;
+      font-weight: 500;
+      color: black;
+      transition: color 0.3s ease, transform 0.3s ease-in-out;
+    }
+
+    .menu-item::after {
+      content: "▼";
+      font-size: 12px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .menu-item:hover {
+      color: #D3509C;
+      transform: translateY(-2px);
+    }
+
+    .menu-item:hover::after {
+      transform: rotate(180deg);
+    }
+
+    /* Dropdown Menu */
+    .dropdown {
+      position: absolute;
+      top: 130%;
+      left: 0;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      flex-direction: column;
+      min-width: max-content;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-top: 3px solid #D3509C;
+      border-radius: 8px;
+      padding: 10px 0;
+      z-index: 10000;
+      opacity: 0;
+      gap: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Show dropdown on hover */
+    nav ul li:hover .dropdown,
+    nav ul li:focus-within .dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(5px);
+    }
+
+    /* Dropdown links */
+    .dropdown li {
+      text-align: left;
+      list-style: none;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 15px 20px;
+      color: black;
+      text-decoration: none;
+      font-weight: 400;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease-in-out;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    /* Soft bounce on dropdown links */
+    .dropdown a:hover {
+      color: #D3509C;
+      transform: scale(1.05);
+      /* Slightly increases size instead of moving */
+    }
+
+    /* Border-bottom animation */
+    .dropdown a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #0364A6;
+      transform: scaleX(0);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .dropdown a:hover::after {
+      transform: scaleX(0.9);
     }
 
     /* Hero Section */
     .hero {
-      background: url('boat2.jpg') no-repeat center center/cover;
-      color: #fff;
+      position: relative;
       height: 100vh;
       display: flex;
-      justify-content: center;
       align-items: center;
-      text-align: center;
-      position: relative;
       overflow: hidden;
+      padding-top: 140px;
     }
 
-    .company-name {
-      font-size: 14rem;
-      font-weight: 900;
-      font-family: 'Nohemi', sans-serif;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .video-container {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 1;
-      background-image: url('net1.jpeg');
-      background-size: cover;
-      background-position: center;
-      color: transparent;
-      font-weight: bold;
+      top: 140px;
+      /* Matches hero padding */
+      left: 0;
+      width: 100%;
+      height: calc(100% - 140px);
+      z-index: -1;
     }
 
-    /* @keyframes fadeOut {
-      0% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-      }
-      80% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-      }
-      100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(1.2);
-      }
-    } */
+    .video-container::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      /* Dark overlay */
+      z-index: 1;
+    }
+
+    .video-slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .video-slide.active {
+      opacity: 1;
+    }
 
     .hero-content {
-      opacity: 0;
-      animation: fadeInUp 1s ease-in-out 3s forwards;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
+      position: relative;
+      z-index: 2;
+      /* Ensures text is above video */
+      color: white;
+      width: min(90%, 600px);
+      /* 90% width but never exceeds 600px */
+      padding-left: 10%;
+      text-align: left;
+      gap: 20px;
+      /* Space between elements */
     }
 
-    /* @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translate(-50%, calc(-50% + 20px));
-      }
-      100% {
-        opacity: 1;
-        transform: translate(-50%, -50%);
-      }
-    } */
-
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 10px;
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 900;
       font-family: 'Nohemi', sans-serif;
-      color: #fff;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      /* Subtle shadow for better readability */
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+      line-height: 1.2;
+      z-index: 2;
     }
 
-    .hero p {
-      font-size: 1.5rem;
-      font-weight: 300;
-      color: #fff;
+    .video-controls {
+      position: absolute;
+      transform: translateY(-50%);
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .video-controls button {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+
+    .video-controls button:hover {
+      opacity: 0.7;
+      color: #D3509C;
+      transform: translateX(var(--direction, 0px));
+    }
+
+    .video-controls button:active {
+      opacity: 0.5;
+      transform: translateX(var(--direction, 5px));
+    }
+
+    /* Left and right specific effects */
+    #prevBtn {
+      --direction: -5px;
+      /* Moves left */
+    }
+
+    #nextBtn {
+      --direction: 5px;
+      /* Moves right */
+    }
+
+    /* Get a Quote Button */
+    .quote-btn {
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #D3509C, #0364A6);
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      margin-top: 4rem;
+      /* Space between video controls & button */
+    }
+
+    /* Hover Effect */
+    .quote-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Click Effect */
+    .quote-btn:active {
+      transform: scale(0.95);
     }
 
     /* About Us Section */
     .about {
       width: 100%;
-      padding: 80px 0;
       position: relative;
       overflow-x: hidden;
     }
 
-    .about h2 {
+    .about .about-heading {
       align-self: end;
       font-size: 12rem;
       font-weight: bold;
@@ -258,8 +405,6 @@
       white-space: nowrap;
       pointer-events: none;
       margin: 0;
-      max-width: 100%;
-      overflow: hidden;
     }
 
     .about .container {
@@ -305,6 +450,15 @@
       line-height: 1.6;
     }
 
+    .text p:nth-of-type(2) {
+      background: linear-gradient(135deg, #D3509C, #0364A6);
+      color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 3rem;
+    }
+
     .text ul {
       list-style: none;
       padding-left: 0;
@@ -346,17 +500,134 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
+    .vision-mission {
+      background: url('vision_bg.jpg') center/cover no-repeat;
+      color: white;
+      padding: 80px 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .vision-mission::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      /* Dark overlay for better readability */
+      z-index: 0;
+    }
+
+    .vision-mission * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .vision-mission .content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 800px;
+      width: 100%;
+      gap: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vision-mission .content h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #D3509C, #0364A6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 2px;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+
+    .vision-mission p {
+      font-size: 1.3rem;
+      font-weight: 400;
+      line-height: 1.8;
+      max-width: 750px;
+      color: rgba(255, 255, 255, 0.95);
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Fixed Divider */
+    .divider {
+      width: 3px;
+      height: 130px;
+      background: white;
+      transition: none;
+    }
+
+    /* Slide-Up & Down Animation */
+    #heading,
+    #text {
+      display: inline-block;
+      transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    }
+
+    .slide-out {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+
+    .slide-in {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+
+    .active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      margin-top: 40px;
+      /* Spacing between text and stats */
+    }
+
+    .stat {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .stat h2 {
+      font-size: 3rem;
+      color: #FFD700;
+      transition: opacity 0.5s ease-in-out;
+    }
+
     .team-section {
       width: 100%;
       text-align: center;
-      margin-top: 80px;
-      border: 1px solid;
+      padding: 80px 0;
     }
 
     .team-section h2 {
       font-size: 2.5rem;
-      color: #1e3c72;
+      background: linear-gradient(90deg, #D3509C, #0364A6);
+      -webkit-background-clip: text;
+      color: transparent;
+      display: inline-block;
       margin-bottom: 40px;
+      font-weight: bold;
     }
 
     .team-cards {
@@ -366,12 +637,17 @@
     }
 
     .team-card {
-      background: white;
+      background: #555a5e;
       padding: 20px;
       border-radius: 10px;
       text-align: center;
       width: 300px;
-      /* border: 1px solid; */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
     }
 
     .team-card img {
@@ -384,13 +660,27 @@
       border-radius: 20px;
     }
 
+    .leadership-description {
+      margin-top: 40px;
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(3, 100, 166, 0.8), rgba(211, 80, 156, 0.8));
+      border-radius: 10px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.1rem;
+      color: #fff;
+      text-align: center;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* Products Section */
     .products {
       width: 100vw;
-      padding: 80px 0;
+      padding-top: 140px;
       position: relative;
       overflow-x: hidden;
-      /* Prevent horizontal scrolling */
     }
 
     .products .container {
@@ -411,62 +701,192 @@
       white-space: nowrap;
       pointer-events: none;
       margin: 0;
-      /* Keeps it above the background text */
+    }
+
+    .nets-content {
+      text-align: center;
     }
 
     .bento-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       grid-template-rows: auto;
       gap: 20px;
       width: 100%;
       max-width: 100vw;
       margin: 40px auto;
-      /* Ensure it doesn’t exceed viewport width */
       box-sizing: border-box;
       overflow: hidden;
+      position: relative;
     }
 
     .grid-item {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #eee;
+      background: #1e3c72;
       border-radius: 10px;
       padding: 20px;
       cursor: pointer;
-      transition: all 0.4s ease-in-out;
-      border: 1px solid;
-
+      transition: all 0.6s ease-in-out;
+      position: relative;
+      overflow: hidden;
     }
 
-    .large {
-      grid-column: span 2;
-      grid-row: span 2;
-      height: 300px;
-    }
-
-    .medium {
-      grid-column: span 2;
-      grid-row: span 1;
-      height: 200px;
-    }
-
+    /* Small grid items */
     .small {
       grid-column: span 1;
       grid-row: span 1;
-      height: 150px;
+      height: 250px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background wrapper */
+    .small::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: transform 0.5s ease-in-out;
+      pointer-events: none;
+      /* Allows clicks to pass through */
+    }
+
+    /* Assign background images */
+    .bg-hdpe::before {
+      background-image: url('./products/nets/hdpe-bg.jpg');
+    }
+
+    .bg-mononet::before {
+      background-image: url('./products/nets/mononet-bg.jpg');
+    }
+
+    .bg-multinet::before {
+      background-image: url('./products/nets/multinet-bg.jpg');
+    }
+
+    /* Smooth zoom effect */
+    .small:hover::before {
+      transform: scale(1.1);
+    }
+
+    /* Tint effect on hover */
+    .small::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0);
+      /* No tint by default */
+      transition: background 0.5s ease-in-out;
+      pointer-events: none;
+      /* Allows clicks to pass through */
+    }
+
+    .small:hover::after {
+      background: rgba(0, 0, 0, 0.5);
+      /* Darker tint on hover */
+    }
+
+    /* Make the text more readable */
+    .small h3 {
+      position: absolute;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: opacity 0.5s ease-in-out;
+      z-index: 2;
+      opacity: 1;
+    }
+
+    /* Fade text in on hover */
+    .small:hover h3 {
+      opacity: 1;
     }
 
     .grid-item.expanded {
       grid-column: span 4 !important;
       grid-row: span 2 !important;
-      height: 400px !important;
+      width: 90% !important;
+      height: 90% !important;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      background: white;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 
-    .grid-item h3 {
-      font-size: 1.5rem;
-      color: #1e3c72;
+    .grid-item.expanded .close-btn {
+      display: block;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 50%;
+      display: none;
+    }
+
+    .bento-grid.dimmed .grid-item:not(.expanded) {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6 ease-in-out;
+    }
+
+    /*Facility section*/
+    .facility {
+      width: 100vw;
+      padding-top: 140px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .facility-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .facility-item {
+      overflow: hidden;
+      border-radius: 10px;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .facility-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .facility-item img,
+    .facility-item video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
     }
 
     /* testimonials section */
@@ -577,6 +997,40 @@
       right: 20px;
     }
 
+    /* Modal Styling */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      overflow: hidden;
+      z-index: 9999;
+      /* Ensures modal stays on top */
+    }
+
+    .modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 50px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 700px;
+      width: 95%;
+      position: relative;
+    }
+
     /* Get a Quote Section */
     .quote {
       padding: 80px 10%;
@@ -601,7 +1055,9 @@
 
     .quote-text h2 {
       font-size: 2.5rem;
-      color: #1e3c72;
+      background: linear-gradient(to right, #D3509C, #0364A6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       margin-bottom: 20px;
     }
 
@@ -618,7 +1074,6 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       max-width: 450px;
-      /* Prevents the form from stretching */
       width: 100%;
     }
 
@@ -637,7 +1092,6 @@
       font-size: 1rem;
       transition: 0.3s ease-in-out;
       box-sizing: border-box;
-      /* Fixes input overflow */
     }
 
     .quote-form input:focus,
@@ -655,7 +1109,7 @@
     .quote-form button {
       width: 100%;
       padding: 12px;
-      background: #1e3c72;
+      background: linear-gradient(135deg, #D3509C, #0364A6);
       color: white;
       border: none;
       border-radius: 5px;
@@ -665,19 +1119,38 @@
     }
 
     .quote-form button:hover {
-      background: #2a5298;
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     /* Footer Section */
     footer {
       background: #1e3c72;
       color: #fff;
-      padding-top: 10rem;
-      padding-bottom: 6rem;
+      padding: 80px 0;
     }
 
     footer .container {
       flex-direction: column;
+    }
+
+    .footer-logo {
+      display: flex;
+      justify-content: center;
+      /* Centers the logo horizontally */
+      align-items: center;
+      /* Centers the logo vertically */
+      margin-bottom: 20px;
+      /* Adds some spacing below the logo */
+    }
+
+    .footer-logo img {
+      max-width: 150px;
+      /* Adjust the size of the logo */
+      height: auto;
+      /* Maintains aspect ratio */
+      object-fit: contain;
+      /* Ensures the image scales properly */
     }
 
     .footer-content {
@@ -717,8 +1190,16 @@
       line-height: 1rem;
     }
 
-    footer a:hover {
-      color: #99ccff;
+    footer .social a:hover {
+      color: #cc147f;
+    }
+
+    .footer-social {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 20px;
     }
 
     footer .contact h3,
@@ -731,6 +1212,7 @@
 
     footer .social a {
       font-size: 3rem;
+      color: #fff;
     }
 
     .copyright {
@@ -799,14 +1281,22 @@
     </div>
     <div class="container">
       <div class="logo">
-        <img src="logo.png" alt="Janatha Fish Nets Logo">
+        <img src="jfn_logo.jpg" alt="Janatha Fish Nets Logo">
       </div>
       <nav>
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About Us</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li>
+            <a href="#" class="menu-item" id="products-menu">Products</a>
+            <ul class="dropdown">
+              <li><a href="#">Fishing Nets</a></li>
+              <li><a href="#">Trawling Nets</a></li>
+              <li><a href="#">Gill Nets</a></li>
+            </ul>
+          </li>
+          <li><a href="#" id="facility-menu">Our Facility</a></li>
+          <li><a href="#footer">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -814,23 +1304,72 @@
 
   <!-- Hero Section -->
   <section id="home" class="hero">
-    <div class="container">
-      <div class="company-name">JANATHA</div>
-      <div class="hero-content">
-        <h1>Engineered for the Perfect Catch.</h1>
-        <p>Premium fishing nets engineered for durability, efficiency, and the perfect catch—every time.</p>
+    <div class="video-container">
+      <video src="vid1.mp4" class="video-slide active" autoplay muted loop>Browser does not support the video
+        format.</video>
+      <video src="vid2.mp4" class="video-slide" autoplay muted loop>Browser does not support the video format.</video>
+      <video src="vid3.mp4" class="video-slide" autoplay muted loop>Browser does not support the video format.</video>
+    </div>
+
+    <div class="hero-content">
+      <h1 id="hero-heading">Engineering Superior Solutions.</h1>
+      <div class="video-controls">
+        <button id="prevBtn">❮</button>
+        <button id="nextBtn">❯</button>
       </div>
-      <!-- <button class="quote-btn" onclick="document.getElementById('quote').scrollIntoView({ behavior: 'smooth' })">
-        GET A QUOTE
-      </button> -->
+      <button id="openQuoteModal" class="quote-btn">Get a Quote</button> <!-- Added Button Below Controls -->
     </div>
   </section>
 
   <!-- About Us Section -->
   <section id="about" class="about">
     <div class="container">
-      <h2>ABOUT US</h2>
+      <h2 class="about-heading">ABOUT US</h2>
       <div class="about-section">
+        <div class="image">
+          <img src="about_us.jpg" alt="Durable fishing net">
+        </div>
+        <div class="text">
+          <h3>WHO WE ARE</h3>
+          <p>Janatha Fishnet, a proud part of the Janatha Group,
+            is committed to empowering communities through quality craftsmanship
+            and sustainable practices. Operating from our state-of-the-art 15-acre
+            facility in Dabekatte, Udupi District, Karnataka, we manufacture premium
+            fishing nets designed for durability, efficiency, and performance.
+            With over 70% of our workforce composed of skilled women,
+            we foster inclusivity and economic growth. Our meticulous
+            production process ensures every net meets the highest quality
+            standards through automated and manual checks. We prioritize eco-friendly solutions,
+            reducing environmental impact while promoting responsible fishing.</p>
+          <p>At Janatha Fishnet, we don’t just deliver products—we build trust, reliability, and lasting partnerships
+            in the global fishing industry.</p>
+        </div>
+      </div>
+      <div class="vision-mission">
+        <div class="content">
+          <h2 id="heading">Vision</h2>
+          <div class="divider"></div>
+          <p id="text">Lead the world in sustainable fishing solutions, driving innovation, supporting communities,
+            and protecting aquatic ecosystems for future generations.</p>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <h2 id="count1" data-target="500">0</h2>
+            <p>Projects Completed</p>
+          </div>
+          <div class="stat">
+            <h2 id="count2" data-target="1200">0</h2>
+            <p>Happy Clients</p>
+          </div>
+          <div class="stat">
+            <h2 id="count3" data-target="50">0</h2>
+            <p>Years of Experience</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="about-section">
         <div class="text">
           <h3>Why We Do This</h3>
           <p>Fishing is more than a job—it’s a way of life. We build high-quality, durable fishing nets designed to
@@ -864,54 +1403,109 @@
         <div class="image">
           <img src="boat2.jpg" alt="Fishermen using our nets">
         </div>
-      </div>
+      </div> -->
       <div class="team-section">
-        <h2>Meet the Team</h2>
+        <h2>Leadership</h2>
         <div class="team-cards">
           <div class="team-card">
             <img src="boat2.jpg" alt="Team Member 1">
-            <h3>John Doe</h3>
-            <p>Founder & CEO</p>
+            <h3>PRASHANTH KUNDER</h3>
+            <p>Managing Director</p>
           </div>
           <div class="team-card">
-            <h3>Jane Smith</h3>
-            <p>Lead Engineer</p>
+            <h3>ANAND KUNDER</h3>
+            <p>Chief Managing Director</p>
             <img src="boat2.jpg" alt="Team Member 2">
           </div>
           <div class="team-card">
             <img src="boat2.jpg" alt="Team Member 3">
-            <h3>Mike Johnson</h3>
-            <p>Operations Manager</p>
+            <h3>RAKSHITH KUNDER</h3>
+            <p>Executive Director</p>
           </div>
+        </div>
+        <div class="leadership-description">
+          Our leadership team brings a wealth of experience and a passion for innovation, driving our company toward a
+          brighter future.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products" id="products-section" style="display: none;">
+    <div class="container">
+      <h2>PRODUCTS</h2>
+      <div class="nets-content">
+        <h3>Fishing Nets</h3>
+        <p>Strong and durable fishing nets.</p>
+      </div>
+      <div class="bento-grid" id="nets-grid">
+        <div class="grid-item small bg-hdpe" onclick="expandItem(this)">
+          <h3>Product 3</h3>
+          <button class="close-btn" onclick="collapseItem(event, this)">✖</button>
+        </div>
+        <div class="grid-item small bg-mononet" onclick="expandItem(this)">
+          <h3>Product 6</h3>
+          <button class="close-btn" onclick="collapseItem(event, this)">✖</button>
+        </div>
+        <div class="grid-item small bg-multinet" onclick="expandItem(this)">
+          <h3>Product 3</h3>
+          <button class="close-btn" onclick="collapseItem(event, this)">✖</button>
+        </div>
+      </div>
+      <div class="floats-content">
+        <h3>Floats</h3>
+        <p>Strong and durable floats.</p>
+      </div>
+      <div class="bento-grid" id="floats-grid">
+        <div class="grid-item small bg-hdpe" onclick="expandItem(this)">
+          <h3>Product 3</h3>
+          <button class="close-btn" onclick="collapseItem(event, this)">✖</button>
+        </div>
+        <div class="grid-item small bg-mononet" onclick="expandItem(this)">
+          <h3>Product 6</h3>
+          <button class="close-btn" onclick="collapseItem(event, this)">✖</button>
+        </div>
+      </div>
+      <div class="twine-content">
+        <h3>Twines</h3>
+        <p>Strong and durable twines.</p>
+      </div>
+      <div class="bento-grid" id="twine-grid">
+        <div class="grid-item small bg-hdpe" onclick="expandItem(this)">
+          <h3>Product 3</h3>
+          <button class="close-btn" onclick="collapseItem(event, this)">✖</button>
+        </div>
+        <div class="grid-item small bg-mononet" onclick="expandItem(this)">
+          <h3>Product 6</h3>
+          <button class="close-btn" onclick="collapseItem(event, this)">✖</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Products Section -->
-  <section id="products" class="products">
+  <section class="facility" id="facility-section" style="display: none;">
     <div class="container">
-      <h2>PRODUCTS</h2>
-      <div class="bento-grid">
-        <div class="grid-item large" onclick="expandItem(this)">
-          <h3>Product 1</h3>
+      <h2>OUR FACILITY</h2>
+      <div class="facility-gallery">
+        <div class="facility-item">
+          <img src="facility1.jpg" alt="Facility Image 1">
         </div>
-        <div class="grid-item medium" onclick="expandItem(this)">
-          <h3>Product 2</h3>
+        <div class="facility-item">
+          <video src="facility2.mp4" autoplay loop muted></video>
         </div>
-        <div class="grid-item small" onclick="expandItem(this)">
-          <h3>Product 3</h3>
+        <div class="facility-item">
+          <img src="facility3.jpg" alt="Facility Image 2">
         </div>
-        <div class="grid-item medium" onclick="expandItem(this)">
-          <h3>Product 4</h3>
-        </div>
-        <div class="grid-item large" onclick="expandItem(this)">
-          <h3>Product 5</h3>
-        </div>
-        <div class="grid-item small" onclick="expandItem(this)">
-          <h3>Product 6</h3>
+        <div class="facility-item">
+          <video src="facility4.mp4" autoplay loop muted></video>
         </div>
       </div>
+      <p class="facility-description">
+        Explore our cutting-edge facility equipped with advanced technology and sustainable practices to ensure the
+        highest quality.
+      </p>
     </div>
   </section>
 
@@ -958,40 +1552,32 @@
   </section>
 
   <!-- Get a Quote Section -->
-  <section id="quote" class="quote">
-    <div class="container">
-
-      <!-- Left Side - Text -->
-      <div class="quote-text">
-        <h2>Get a Quote</h2>
-        <p>Looking for high-quality fishing nets? Tell us what you need, and we'll get back to you with a tailored
-          solution.</p>
-      </div>
-
-      <!-- Right Side - Form -->
-      <div class="quote-form">
-        <form>
-          <input type="text" placeholder="Your Name" maxlength="50" required
-            oninvalid="this.setCustomValidity('Oops! We need your name to reach out.')"
-            oninput="this.setCustomValidity('')">
-
-          <input type="email" placeholder="Your Email" maxlength="50" required
-            oninvalid="this.setCustomValidity('Please enter a valid email so we can contact you.')"
-            oninput="this.setCustomValidity('')">
-
-          <textarea placeholder="Your Message" maxlength="500" required></textarea>
-          <button type="submit">Submit</button>
-        </form>
+  <div id="quoteModal" class="modal">
+    <div class="modal-content">
+      <div class="container">
+        <div class="quote-text">
+          <h2>Get a Quote</h2>
+          <p>Looking for high-quality fishing nets? Tell us what you need, and we'll get back to you with a tailored
+            solution.</p>
+        </div>
+        <div class="quote-form">
+          <form>
+            <input type="text" placeholder="Your Name" maxlength="50" required>
+            <input type="email" placeholder="Your Email" maxlength="50" required>
+            <textarea placeholder="Your Message" maxlength="500" required></textarea>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- Footer Section -->
   <footer>
     <div class="container">
-      <div class="footer-content">
+      <div class="footer-content" id="footer">
         <div class="footer-logo" id="contact">
-          <h1>JANATHA</h>
+          <img src="jfn_logo.jpg" alt="Janatha Fish Nets Logo">
         </div>
         <div class="contact" id="contact">
           <h3>CONTACT US</h3>
@@ -1001,7 +1587,7 @@
         </div>
         <div class="social">
           <h3>FOLLOW US</h3>
-          <ul class="header-social">
+          <ul class="footer-social">
             <li>
               <a href="https://instagram.com/kinwitstechnologies" target="_blank" rel="noopener noreferrer"
                 aria-label="Instagram">
@@ -1031,15 +1617,192 @@
 
   <!-- JavaScript for Sticky Header -->
   <script>
-    const header = document.querySelector('header');
+    document.addEventListener("DOMContentLoaded", function () {
+      const productMenu = document.getElementById("products-menu");
+      const facilityMenu = document.getElementById("facility-menu"); // Adjust selector if needed
+      const sections = document.querySelectorAll("section"); // Selects all sections
+      const facilitySection = document.getElementById("facility-section");
+      const productsSection = document.getElementById("products-section");
 
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 400) { // Adjust the scroll threshold as needed
-        header.classList.add('sticky');
-      } else {
-        header.classList.remove('sticky');
+      function hideSections() {
+        sections.forEach(section => {
+          section.style.display = "none";
+        });
       }
+
+      productMenu.addEventListener("click", function (e) {
+        e.preventDefault();
+        hideSections();
+        productsSection.style.display = "block";
+      });
+
+      facilityMenu.addEventListener("click", function (e) {
+        e.preventDefault();
+        hideSections();
+        facilitySection.style.display = "block";
+      });
+
+      const headerContainer = document.querySelector(".header-container");
+      const heroSection = document.querySelector(".hero");
+
+      const menuItem = document.getElementById("products-menu");
+      const dropdown = document.querySelector(".dropdown");
+      const dropdownItems = dropdown.querySelectorAll("li");
+
+      menuItem.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        // Toggle dropdown visibility
+        if (dropdown.style.display === "flex") {
+          dropdown.style.display = "none";
+        } else {
+          dropdown.style.display = "flex";
+        }
+      });
+
+      // ✅ Close dropdown when clicking on any li
+      dropdownItems.forEach(item => {
+        item.addEventListener("click", function (event) {
+          event.stopPropagation(); // Prevent bubbling up
+          dropdown.style.display = "none";
+        });
+      });
+
+      // ✅ Close dropdown if clicking outside
+      document.addEventListener("click", function (event) {
+        if (!menuItem.contains(event.target) && !dropdown.contains(event.target)) {
+          dropdown.style.display = "none";
+        }
+      });
+
+      // Hide header-container when scrolling past hero section
+      window.addEventListener("scroll", () => {
+        const heroBottom = heroSection.getBoundingClientRect().bottom;
+        headerContainer.style.display = heroBottom < 0 ? "none" : "flex";
+      });
+
+      const modal = document.querySelector(".modal");
+      const openModalBtn = document.querySelector("#openQuoteModal"); // Adjust ID if needed
+
+      openModalBtn.addEventListener("click", function () {
+        modal.classList.add("show");
+        document.body.classList.remove('modal-open');
+      });
+
+      window.addEventListener("click", function (e) {
+        if (e.target === modal) {
+          modal.classList.remove("show");
+        }
+      });
     });
+
+    const videos = document.querySelectorAll(".video-slide");
+    const heroHeading = document.getElementById("hero-heading");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    let currentVideoIndex = 0;
+
+    const headings = [
+      "Engineering Superior Solutions and Products.",
+      "For Enhanced Success.",
+      "With Future-Ready Fibers."
+    ];
+
+    // Function to change video and update text
+    function changeVideo(index) {
+      videos.forEach((video, i) => {
+        video.classList.toggle("active", i === index);
+      });
+
+      heroHeading.style.opacity = 0; // Fade out
+      setTimeout(() => {
+        heroHeading.textContent = headings[index]; // Update text
+        heroHeading.style.opacity = 1; // Fade in
+      }, 300); // Delay matches transition speed
+    }
+
+    // Auto-switch every 10 seconds
+    setInterval(() => {
+      currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+      changeVideo(currentVideoIndex);
+    }, 10000);
+
+    // Manual navigation
+    nextBtn.addEventListener("click", () => {
+      currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+      changeVideo(currentVideoIndex);
+    });
+
+    prevBtn.addEventListener("click", () => {
+      currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
+      changeVideo(currentVideoIndex);
+    });
+
+    // Initialize first text
+    heroHeading.textContent = headings[currentVideoIndex];
+
+    const heading = document.getElementById("heading");
+    const text = document.getElementById("text");
+    const divider = document.querySelector(".divider");
+
+    const visionText = "Lead the world in sustainable fishing solutions, driving innovation, supporting communities, and protecting aquatic ecosystems for future generations.";
+    const missionText = "Empower the fishing community with high-quality, cost-effective nets, delivering innovative solutions that maximize customer value.";
+
+    let isVision = true;
+
+    setInterval(() => {
+      heading.classList.add("slide-out");
+      text.classList.add("slide-out");
+
+      setTimeout(() => {
+        if (isVision) {
+          heading.textContent = "Mission";
+          text.textContent = missionText;
+        } else {
+          heading.textContent = "Vision";
+          text.textContent = visionText;
+        }
+
+        isVision = !isVision;
+
+        heading.classList.remove("slide-out");
+        text.classList.remove("slide-out");
+        heading.classList.add("slide-in");
+        text.classList.add("slide-in");
+
+        setTimeout(() => {
+          heading.classList.remove("slide-in");
+          text.classList.remove("slide-in");
+        }, 1000);
+      }, 1000); // Wait for slide-out before switching
+    }, 8000); // Slower transition every 5 seconds
+
+
+    function animateCounter(id, target) {
+      let count = 0;
+      let speed = Math.ceil(target / 100); // Controls speed of counting
+
+      function updateCount() {
+        if (count < target) {
+          count += speed;
+          if (count > target) count = target; // Ensure it stops exactly at target
+          document.getElementById(id).textContent = count;
+          requestAnimationFrame(updateCount);
+        }
+      }
+
+      updateCount();
+    }
+
+    // Trigger counters when the section comes into view
+    function startCounters() {
+      animateCounter("count1", 500);
+      animateCounter("count2", 1200);
+      animateCounter("count3", 50);
+    }
+
+    // Run when the page loads
+    window.addEventListener("load", startCounters);
 
     let currentIndex = 0;
     const testimonials = document.querySelectorAll(".testimonial-item");
@@ -1086,11 +1849,15 @@
 
     function expandItem(item) {
       document.querySelectorAll('.grid-item').forEach(el => el.classList.remove('expanded'));
+      document.querySelector('.bento-grid').classList.add('dimmed');
       item.classList.add('expanded');
     }
-    function collapseProduct(element) {
-      element.classList.remove('expanded');
-      element.onclick = function () { expandProduct(element); };
+
+    function collapseItem(event, button) {
+      event.stopPropagation();
+      let item = button.parentElement;
+      item.classList.remove('expanded');
+      document.querySelector('.bento-grid').classList.remove('dimmed');
     }
   </script>
 </body>

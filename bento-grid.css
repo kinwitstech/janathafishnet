@@ -1,0 +1,108 @@
+/* Products Section */
+.products {
+    width: 100vw;
+    padding-top: 140px;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  .products .container {
+    width: 100%;
+    max-width: 100vw;
+    padding: 0 20px;
+    box-sizing: border-box;
+    flex-direction: column;
+  }
+
+  .products h2 {
+    align-self: end;
+    font-size: 12rem;
+    font-weight: bold;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(30, 60, 114, 0.2);
+    z-index: 1;
+    white-space: nowrap;
+    pointer-events: none;
+    margin: 0;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+    width: 100%;
+    max-width: 100vw;
+    margin: 40px auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .grid-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1e3c72;
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.6s ease-in-out;
+    position: relative;
+  }
+
+  .large {
+    grid-column: span 2;
+    grid-row: span 2;
+    height: 410px;
+  }
+
+  .medium {
+    grid-column: span 2;
+    grid-row: span 1;
+    height: 200px;
+  }
+
+  .small {
+    grid-column: span 2;
+    grid-row: span 1;
+    height: 150px;
+  }
+
+  .grid-item.expanded {
+    grid-column: span 4 !important;
+    grid-row: span 2 !important;
+    width: 90% !important;
+    height: 90% !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .grid-item.expanded .close-btn {
+    display: block;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 50%;
+    display: none;
+  }
+
+  .bento-grid.dimmed .grid-item:not(.expanded) {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6 ease-in-out;
+  }
