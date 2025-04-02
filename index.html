@@ -1,1098 +1,2113 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Janatha Fish Nets</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Nohemi:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Satoshi:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <style>
-    h1 {
-      font-family: 'Nohemi', sans-serif;
-    }
-
-    h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      ;
-    }
-
-    p,
-    body {
-      font-family: 'Satoshi', sans-serif;
-    }
-
-    /* General Styles */
-    body,
-    html {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-      scroll-behavior: smooth;
-      overflow-y: scroll;
-      /* Enables scrolling */
-      scrollbar-width: none;
-    }
-
-    html::-webkit-scrollbar {
-      display: none;
-    }
-
-    /* Header Section */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: transparent;
-      /* Transparent background */
-      z-index: 1000;
-      box-shadow: none;
-      /* Remove shadow for transparency */
-      padding: 20px 0;
-      /* Increased padding for height */
-      transition: all 0.3s ease;
-      /* Smooth transition */
-    }
-
-    .header-container {
-      width: 90%;
-      max-width: 1200px;
-      /* Same as .container */
-      margin: 0 auto;
-      /* Center the container */
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 0;
-      background: transparent;
-      /* Transparent background */
-      color: #fff;
-      margin-bottom: 20px;
-      /* Space between header and main content */
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      /* Thin border bottom */
-    }
-
-    /* Sticky Header */
-    header.sticky {
-      background: rgba(30, 60, 114, 0.95);
-      /* Darker semi-transparent background */
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      /* Add shadow for depth */
-    }
-
-    header.sticky .header-container {
-      display: none;
-      /* Hide header-container when sticky */
-    }
-
-    header.sticky .container {
-      padding: 10px 0;
-      /* Adjust padding for sticky header */
-    }
-
-    .header-contact,
-    .header-social {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-    }
-
-    .header-social {
-      gap: 20px;
-    }
-
-    .header-contact {
-      gap: 50px;
-    }
-
-    .header-contact li,
-    .header-social li {
-      font-size: 0.9rem;
-    }
-
-    .header-social a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.2rem;
-    }
-
-    .header-social a:hover {
-      color: #99ccff;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 0;
-    }
-
-    .logo img {
-      height: 50px;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav ul li a {
-      color: #fff;
-      /* White text for better visibility */
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
-    nav ul li a:hover {
-      color: #99ccff;
-      /* Light blue on hover */
-    }
-
-    /* Hero Section */
-    .hero {
-      background: url('boat2.jpg') no-repeat center center/cover;
-      color: #fff;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .company-name {
-      font-size: 14rem;
-      font-weight: 900;
-      font-family: 'Nohemi', sans-serif;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 1;
-      background-image: url('net1.jpeg');
-      background-size: cover;
-      background-position: center;
-      color: transparent;
-      font-weight: bold;
-    }
-
-    /* @keyframes fadeOut {
-      0% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-      }
-      80% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-      }
-      100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(1.2);
-      }
-    } */
-
-    .hero-content {
-      opacity: 0;
-      animation: fadeInUp 1s ease-in-out 3s forwards;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-    }
-
-    /* @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translate(-50%, calc(-50% + 20px));
-      }
-      100% {
-        opacity: 1;
-        transform: translate(-50%, -50%);
-      }
-    } */
-
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 10px;
-      font-family: 'Nohemi', sans-serif;
-      color: #fff;
-    }
-
-    .hero p {
-      font-size: 1.5rem;
-      font-weight: 300;
-      color: #fff;
-    }
-
-    /* About Us Section */
-    .about {
-      width: 100%;
-      padding: 80px 0;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    .about h2 {
-      align-self: end;
-      font-size: 12rem;
-      font-weight: bold;
-      color: transparent;
-      -webkit-text-stroke: 2px rgba(30, 60, 114, 0.2);
-      z-index: 1;
-      white-space: nowrap;
-      pointer-events: none;
-      margin: 0;
-      max-width: 100%;
-      overflow: hidden;
-    }
-
-    .about .container {
-      width: 100%;
-      max-width: 100%;
-      padding: 0 20px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .about-section {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      /* Reduced gap to prevent overflow */
-      max-width: 1200px;
-      width: 100%;
-      margin: 40px auto;
-      text-align: left;
-    }
-
-    body,
-    html {
-      overflow-x: hidden;
-    }
-
-    .text {
-      flex: 1;
-    }
-
-    .text h3 {
-      font-size: 1.8rem;
-      color: #1e3c72;
-      margin-bottom: 15px;
-    }
-
-    .text p,
-    .text ul {
-      font-size: 1rem;
-      color: #555;
-      line-height: 1.6;
-    }
-
-    .text ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .text li {
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-    }
-
-    .text li::before {
-      content: "✔";
-      color: #1e3c72;
-      font-weight: bold;
-      margin-right: 10px;
-    }
-
-    .image {
-      flex: 1;
-      text-align: center;
-      height: 500px;
-      /* Ensures a consistent height */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      /* Ensure it takes full width of parent */
-    }
-
-    .image img {
-      width: 100%;
-      /* Allow the image to take full width of .image */
-      height: 100%;
-      /* Ensure full height */
-      object-fit: cover;
-      /* Crop to fit without stretching */
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .team-section {
-      width: 100%;
-      text-align: center;
-      margin-top: 80px;
-      border: 1px solid;
-    }
-
-    .team-section h2 {
-      font-size: 2.5rem;
-      color: #1e3c72;
-      margin-bottom: 40px;
-    }
-
-    .team-cards {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-    }
-
-    .team-card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      width: 300px;
-      /* border: 1px solid; */
-    }
-
-    .team-card img {
-      width: 100%;
-      max-width: 200px;
-      height: 200px;
-      object-fit: cover;
-      margin-bottom: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-      border-radius: 20px;
-    }
-
-    /* Products Section */
-    .products {
-      width: 100vw;
-      padding: 80px 0;
-      position: relative;
-      overflow-x: hidden;
-      /* Prevent horizontal scrolling */
-    }
-
-    .products .container {
-      width: 100%;
-      max-width: 100vw;
-      padding: 0 20px;
-      box-sizing: border-box;
-      flex-direction: column;
-    }
-
-    .products h2 {
-      align-self: end;
-      font-size: 12rem;
-      font-weight: bold;
-      color: transparent;
-      -webkit-text-stroke: 2px rgba(30, 60, 114, 0.2);
-      z-index: 1;
-      white-space: nowrap;
-      pointer-events: none;
-      margin: 0;
-      /* Keeps it above the background text */
-    }
-
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: auto;
-      gap: 20px;
-      width: 100%;
-      max-width: 100vw;
-      margin: 40px auto;
-      /* Ensure it doesn’t exceed viewport width */
-      box-sizing: border-box;
-      overflow: hidden;
-    }
-
-    .grid-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #eee;
-      border-radius: 10px;
-      padding: 20px;
-      cursor: pointer;
-      transition: all 0.4s ease-in-out;
-      border: 1px solid;
-
-    }
-
-    .large {
-      grid-column: span 2;
-      grid-row: span 2;
-      height: 300px;
-    }
-
-    .medium {
-      grid-column: span 2;
-      grid-row: span 1;
-      height: 200px;
-    }
-
-    .small {
-      grid-column: span 1;
-      grid-row: span 1;
-      height: 150px;
-    }
-
-    .grid-item.expanded {
-      grid-column: span 4 !important;
-      grid-row: span 2 !important;
-      height: 400px !important;
-    }
-
-    .grid-item h3 {
-      font-size: 1.5rem;
-      color: #1e3c72;
-    }
-
-    /* testimonials section */
-    .testimonials {
-      padding: 80px 0;
-      background: #f9f9f9;
-      text-align: center;
-      position: relative;
-    }
-
-    .testimonials .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .testimonials h2 {
-      font-size: 2.5rem;
-      margin-bottom: 40px;
-      color: #1e3c72;
-    }
-
-    .testimonial-wrapper {
-      width: 880px;
-      /* Make sure this matches the visible area */
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-    }
-
-    .testimonial-grid {
-      display: flex;
-      gap: 40px;
-      transition: transform 0.5s ease-in-out;
-      padding: 20px 0;
-      width: max-content;
-      /* Ensures the grid expands as needed */
-    }
-
-    .testimonial-item {
-      background: #fff;
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      width: 400px;
-      height: 300px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      flex: 0 0 auto;
-    }
-
-    .testimonial-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .testimonial-item p {
-      font-size: 1.1rem;
-      color: #555;
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
-    .testimonial-item span {
-      font-size: 1rem;
-      color: #1e3c72;
-      font-weight: 500;
-      display: block;
-      margin-top: 10px;
-    }
-
-    .arrow {
-      background: none;
-      border: none;
-      font-size: 2rem;
-      cursor: pointer;
-      color: #1e3c72;
-      transition: color 0.3s ease;
-      padding: 10px;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 1;
-    }
-
-    .arrow:hover {
-      color: #555;
-    }
-
-    .arrow:disabled {
-      color: #ccc;
-      cursor: not-allowed;
-    }
-
-    .left-arrow {
-      left: 20px;
-    }
-
-    .right-arrow {
-      right: 20px;
-    }
-
-    /* Get a Quote Section */
-    .quote {
-      padding: 80px 10%;
-      background: linear-gradient(to right, #f9f9f9, #e6ecf5);
-      display: flex;
-      justify-content: center;
-    }
-
-    .quote .container {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      max-width: 1000px;
-      gap: 60px;
-    }
-
-    .quote-text {
-      flex: 1;
-      text-align: left;
-    }
-
-    .quote-text h2 {
-      font-size: 2.5rem;
-      color: #1e3c72;
-      margin-bottom: 20px;
-    }
-
-    .quote-text p {
-      font-size: 1.1rem;
-      color: #555;
-      line-height: 1.6;
-    }
-
-    .quote-form {
-      flex: 1;
-      background: white;
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      max-width: 450px;
-      /* Prevents the form from stretching */
-      width: 100%;
-    }
-
-    .quote-form form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .quote-form input,
-    .quote-form textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-      transition: 0.3s ease-in-out;
-      box-sizing: border-box;
-      /* Fixes input overflow */
-    }
-
-    .quote-form input:focus,
-    .quote-form textarea:focus {
-      border-color: #1e3c72;
-      outline: none;
-      box-shadow: 0 0 5px rgba(30, 60, 114, 0.3);
-    }
-
-    .quote-form textarea {
-      height: 120px;
-      resize: none;
-    }
-
-    .quote-form button {
-      width: 100%;
-      padding: 12px;
-      background: #1e3c72;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: 0.3s ease-in-out;
-    }
-
-    .quote-form button:hover {
-      background: #2a5298;
-    }
-
-    /* Footer Section */
-    footer {
-      background: #1e3c72;
-      color: #fff;
-      padding-top: 10rem;
-      padding-bottom: 6rem;
-    }
-
-    footer .container {
-      flex-direction: column;
-    }
-
-    .footer-content {
-      margin-bottom: 5rem;
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-    }
-
-    footer h3 {
-      font-size: 1.2rem;
-      line-height: 1.3;
-      text-transform: uppercase;
-      letter-spacing: 0.25rem;
-      color: #cc147f;
-      margin-bottom: 2.1rem;
-    }
-
-    footer h3::before {
-      content: "/ ";
-    }
-
-    footer .contact-email {
-      font-size: 2rem;
-      color: #fff;
-      text-decoration: none;
-    }
-
-    footer .contact-phone {
-      font-size: 1.5rem;
-      line-height: 1.5;
-      margin-top: 4rem
-    }
-
-    footer .contact-address {
-      font-size: 1.5rem;
-      line-height: 1rem;
-    }
-
-    footer a:hover {
-      color: #99ccff;
-    }
-
-    footer .contact h3,
-    footer .social h3 {
-      font-size: 1.2rem;
-      line-height: 1.3;
-      letter-spacing: 0.25rem;
-      margin-bottom: 2rem;
-    }
-
-    footer .social a {
-      font-size: 3rem;
-    }
-
-    .copyright {
-      text-align: center;
-      margin-top: 30px;
-      font-size: 1rem;
-      align-self: flex-start;
-    }
-
-    .footer-watermark {
-      position: absolute;
-      font-size: 13rem;
-      font-weight: 900;
-      color: rgba(255, 255, 255, 0.03);
-      letter-spacing: 1rem;
-    }
-
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.5rem;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Janatha Fish Nets</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Nohemi:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Satoshi:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      h1 {
+        font-family: "Nohemi", sans-serif;
       }
 
-      .hero p {
+      h3 {
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      p,
+      body {
+        font-family: "Satoshi", sans-serif;
+      }
+
+      /* General Styles */
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        font-family: "Inter", sans-serif;
+        scroll-behavior: smooth;
+        overflow-y: scroll;
+        /* Enables scrolling */
+        scrollbar-width: none;
+      }
+
+      html::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Header section */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .header-container {
+        width: 90%;
+        /* max-width: 1200px; */
+        margin: 0 auto 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        background: #ffffff;
+        color: black;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      }
+
+      .header-container a:hover {
+        color: #d3509c;
+      }
+
+      /* Sticky Header */
+      header.sticky {
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      header.sticky .header-container {
+        display: flex;
+      }
+
+      .header-contact,
+      .header-social {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      .header-social {
+        gap: 20px;
+      }
+
+      .header-contact {
+        gap: 50px;
+      }
+
+      .header-contact li,
+      .header-social li {
+        font-size: 0.9rem;
+        color: black;
+      }
+
+      .header-social a {
+        color: black;
+        text-decoration: none;
         font-size: 1.2rem;
       }
 
+      .header-social a:hover {
+        color: #d3509c;
+      }
+
+      .container {
+        width: 90%;
+        /* max-width: 1200px; */
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 10px;
+        padding-top: 10px;
+      }
+
+      .logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 70px;
+        mix-blend-mode: multiply;
+      }
+
+      .company-name {
+        margin: 0;
+        font-style: italic;
+        font-family: sans-serif;
+        font-size: 1rem;
+        display: flex;
+        gap: 7px;
+      }
+
+      .company-name h3:nth-child(1) {
+        margin: 0;
+        color: #0364a6;
+      }
+
+      .company-name h3:nth-child(2) {
+        margin: 0;
+        color: #d3509c;
+      }
+
+      .company-tag {
+        margin: 0;
+        font-size: 0.6rem;
+        font-style: italic;
+        font-family: sans-serif;
+        color: #0364a6;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+        gap: 30px;
+        /* Space between nav items */
+      }
+
+      nav ul li {
+        position: relative;
+      }
+
+      nav ul li a {
+        color: black;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease, transform 0.3s ease-in-out;
+        display: inline-block;
+      }
+
+      /* Soft bounce animation on hover */
+      nav ul li a:hover {
+        color: #d3509c;
+        transform: translateY(-2px);
+        /* Moves up slightly */
+      }
+
+      /* Menu Item with Dropdown Arrow */
+      .menu-item {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        /* Space between text and arrow */
+        text-decoration: none;
+        font-weight: 500;
+        color: black;
+        transition: color 0.3s ease, transform 0.3s ease-in-out;
+      }
+
+      .menu-item::after {
+        content: "▼";
+        font-size: 12px;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .menu-item:hover {
+        color: #d3509c;
+        transform: translateY(-2px);
+      }
+
+      .menu-item:hover::after {
+        transform: rotate(180deg);
+      }
+
+      /* Dropdown Menu */
+      .dropdown {
+        position: absolute;
+        top: 130%;
+        left: 0;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        min-width: max-content;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-top: 3px solid #d3509c;
+        border-radius: 8px;
+        padding: 10px 0;
+        z-index: 10000;
+        opacity: 0;
+        gap: 0;
+        visibility: hidden;
+        transform: translateY(12px);
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+      }
+
+      /* Show dropdown on hover */
+      nav ul li:hover .dropdown,
+      nav ul li:focus-within .dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(5px);
+      }
+
+      /* Dropdown links */
+      .dropdown li {
+        text-align: left;
+        list-style: none;
+      }
+
+      .dropdown a {
+        display: block;
+        padding: 15px 20px;
+        color: black;
+        text-decoration: none;
+        font-weight: 400;
+        transition: background-color 0.3s ease, color 0.3s ease,
+          transform 0.3s ease-in-out;
+        white-space: nowrap;
+        position: relative;
+      }
+
+      /* Soft bounce on dropdown links */
+      .dropdown a:hover {
+        color: #d3509c;
+        transform: scale(1.05);
+        /* Slightly increases size instead of moving */
+      }
+
+      /* Border-bottom animation */
+      .dropdown a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #0364a6;
+        transform: scaleX(0);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .dropdown a:hover::after {
+        transform: scaleX(0.9);
+      }
+
+      /* Hero Section */
+      .hero {
+        position: relative;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        padding-top: 140px;
+      }
+
+      .video-container {
+        position: absolute;
+        top: 140px;
+        /* Matches hero padding */
+        left: 0;
+        width: 100%;
+        height: calc(100% - 140px);
+        z-index: -1;
+      }
+
+      .video-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        /* Dark overlay */
+        z-index: 1;
+      }
+
+      .video-slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .video-slide.active {
+        opacity: 1;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        /* Ensures text is above video */
+        color: white;
+        width: min(90%, 800px);
+        /* 90% width but never exceeds 600px */
+        padding-left: 10%;
+        text-align: left;
+        gap: 20px;
+        /* Space between elements */
+      }
+
+      .hero-content h1 {
+        font-size: 4rem;
+        font-weight: 900;
+        font-family: "Nohemi", sans-serif;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        /* Subtle shadow for better readability */
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+        line-height: 1.2;
+        z-index: 2;
+      }
+
+      .video-controls {
+        position: absolute;
+        transform: translateY(-50%);
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .video-controls button {
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+      }
+
+      .video-controls button:hover {
+        opacity: 0.7;
+        color: #d3509c;
+        transform: translateX(var(--direction, 0px));
+      }
+
+      .video-controls button:active {
+        opacity: 0.5;
+        transform: translateX(var(--direction, 5px));
+      }
+
+      /* Left and right specific effects */
+      #prevBtn {
+        --direction: -5px;
+        /* Moves left */
+      }
+
+      #nextBtn {
+        --direction: 5px;
+        /* Moves right */
+      }
+
+      /* Get a Quote Button */
+      .quote-btn {
+        padding: 16px 28px;
+        background: linear-gradient(135deg, #d3509c, #0364a6);
+        color: white;
+        font-weight: 600;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        margin-top: 4rem;
+        /* Space between video controls & button */
+      }
+
+      /* Hover Effect */
+      .quote-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Click Effect */
+      .quote-btn:active {
+        transform: scale(0.95);
+      }
+
+      /* About Us Section */
+      .about {
+        width: 100%;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      .about .about-heading {
+        align-self: end;
+        font-size: 7rem;
+        font-weight: bold;
+        color: transparent;
+        -webkit-text-stroke: 2px rgba(30, 60, 114, 0.2);
+        z-index: 1;
+        white-space: nowrap;
+        pointer-events: none;
+        margin: 0;
+      }
+
+      .about .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .about-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        width: 100%;
+        padding-bottom: 80px;
+        text-align: left;
+      }
+
+      body,
+      html {
+        overflow-x: hidden;
+      }
+
+      .text {
+        flex: 1;
+      }
+
+      .text h3 {
+        font-size: 1.8rem;
+        color: #0364a6;
+        margin-bottom: 15px;
+      }
+
+      .text p,
+      .text ul {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.6;
+      }
+
+      .text p:nth-of-type(2) {
+        background: linear-gradient(135deg, #d3509c, #0364a6);
+        color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-top: 3rem;
+      }
+
+      .text ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .text li {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      .text li::before {
+        content: "✔";
+        color: #1e3c72;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+
+      .image {
+        flex: 1;
+        text-align: center;
+        height: 500px;
+        /* Ensures a consistent height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        /* Ensure it takes full width of parent */
+      }
+
+      .image img {
+        width: 100%;
+        /* Allow the image to take full width of .image */
+        height: 100%;
+        /* Ensure full height */
+        object-fit: cover;
+        /* Crop to fit without stretching */
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .vision-mission {
+        background: url("vision_bg.jpg") center/cover no-repeat;
+        color: white;
+        padding: 80px 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .vision-mission::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        /* Dark overlay for better readability */
+        z-index: 0;
+      }
+
+      .vision-mission * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .vision-mission .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 900px;
+        width: 100%;
+        gap: 30px;
+        position: relative;
+        overflow: hidden;
+        min-height: 155px;
+      }
+
+      .vision-mission .content h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, #cc147f, #1e3c72);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 2px;
+        margin-bottom: 0;
+        margin-top: 0;
+        min-width: 12rem;
+      }
+
+      .vision-mission p {
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: 1.8;
+        max-width: 750px;
+        color: rgba(255, 255, 255, 0.95);
+      }
+
+      /* Fixed Divider */
+      .divider {
+        position: absolute; /* Keep the divider in place */
+        left: 24%; /* Adjust this to control its horizontal position */
+        top: 50%; /* Adjust this to center it vertically */
+        transform: translateY(-50%); /* Ensure it stays centered */
+        width: 3px;
+        height: 150px; /* Or adjust as needed */
+        background: white;
+        z-index: 1;
+      }
+
+      /* Slide-Up & Down Animation */
+      #heading,
+      #text {
+        display: inline-block;
+        transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+      }
+
+      .slide-out {
+        transform: translateY(-30px);
+        opacity: 0;
+      }
+
+      .slide-in {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+
+      .active {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .stats {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 100px;
+        margin-top: 40px;
+      }
+
+      .stat {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .stat h2 {
+        font-size: 3rem;
+        color: #ffd700;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      .team-section {
+        width: 100%;
+        text-align: center;
+        padding: 80px 0;
+      }
+
+      .team-section h2 {
+        font-size: 2.5rem;
+        color: #0364a6;
+        display: inline-block;
+        margin-top: 0;
+        font-weight: bold;
+      }
+
+      .team-cards {
+        display: flex;
+        justify-content: center;
+        gap: 100px;
+      }
+
+      .team-card {
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        width: 300px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .team-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .team-card img {
+        width: 100%;
+        object-fit: cover;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        border-radius: 20px;
+      }
+
+      .leadership-description {
+        margin-top: 40px;
+        padding: 20px;
+        background: linear-gradient(
+          135deg,
+          rgba(3, 100, 166, 0.8),
+          rgba(211, 80, 156, 0.8)
+        );
+        border-radius: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1.1rem;
+        color: #fff;
+        text-align: center;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Products Section */
+      .products {
+        width: 100vw;
+        padding-top: 200px;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      .products .container {
+        width: 100%;
+        max-width: 100vw;
+        padding: 0 20px;
+        box-sizing: border-box;
+        flex-direction: column;
+      }
+
+      .products .products-heading {
+        align-self: end;
+        font-size: 7rem;
+        font-weight: bold;
+        color: transparent;
+        -webkit-text-stroke: 2px rgba(30, 60, 114, 0.2);
+        z-index: 1;
+        white-space: nowrap;
+        pointer-events: none;
+        margin: 0;
+      }
+
       .bento-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        gap: 20px;
+        width: 100%;
+        max-width: 100vw;
+        margin: 40px auto;
+        box-sizing: border-box;
+        overflow: hidden;
+        position: relative;
       }
 
-      .product-item.large,
-      .product-item.wide {
+      .nets-content,
+      .floats-content,
+      .twine-content {
+        width: 100%;
+        background: linear-gradient(135deg, #d3509c, #0364a6);
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        border-radius: 10px;
+
+        h3 {
+          color: white;
+          margin: 0;
+          padding-left: 1rem;
+        }
+      }
+
+      .bento-grid .net-name {
+        color: #cc147f;
+      }
+
+      .bento-grid .net-description {
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-family: "Inter", sans-serif;
+        font-size: 1rem;
+        color: #555;
+      }
+
+      .grid-item {
+        display: flex;
+        flex-direction: column;
+        background: whitesmoke;
+        border-radius: 10px;
+        padding: 20px;
+        overflow: hidden;
         grid-column: span 1;
-      }
-
-      .product-item.tall {
         grid-row: span 1;
+        min-height: 650px;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <!-- Header Section -->
-  <header>
-    <div class="header-container">
-      <ul class="header-contact">
-        <li>janata@gmail.com</li>
-        <li>+91-977-587-3874</li>
-      </ul>
-      <ul class="header-social">
-        <li>
-          <a href="https://instagram.com/kinwitstechnologies" target="_blank" rel="noopener noreferrer"
-            aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://linkedin.com/company/kinwits" target="_blank" rel="noopener noreferrer"
-            aria-label="LinkedIn">
-            <i class="fab fa-linkedin"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class="container">
-      <div class="logo">
-        <img src="logo.png" alt="Janatha Fish Nets Logo">
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#contact">Contact</a></li>
+      .advantages ul {
+        list-style-type: none;
+        margin-left: 0;
+        padding-left: 0;
+      }
+
+      .advantages li {
+        font-size: 1rem;
+        margin-bottom: 20px;
+        color: #1e3c72;
+        border-left: 3px solid #cc147f;
+        padding-left: 8px;
+        display: flex;
+        align-items: center;
+        min-height: 40px;
+        padding: 5px;
+        transition: all 0.3s ease-in-out; /* Smooth transition for all properties */
+      }
+
+      /* Hover effect */
+      .advantages li:hover {
+        background-color: #f1f1f1; /* Light background color on hover */
+        transform: translateX(5px); /* Subtle slide to the right */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow on hover */
+      }
+
+      /*Facility section*/
+      .facility {
+        width: 100vw;
+        padding-top: 200px;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      .facility .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .facility .facility-heading {
+        align-self: end;
+        font-size: 7rem;
+        font-weight: bold;
+        color: transparent;
+        -webkit-text-stroke: 2px rgba(30, 60, 114, 0.2);
+        z-index: 1;
+        white-space: nowrap;
+        pointer-events: none;
+        margin: 0;
+      }
+
+      .facility .facility-description {
+        background: linear-gradient(135deg, #d3509c, #0364a6);
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        color: white;
+        border-radius: 10px;
+        padding: 10px;
+        line-height: 1.5rem;
+      }
+
+      .facility-gallery {
+        display: grid;
+        gap: 20px;
+        width: 100%;
+        padding-bottom: 3rem;
+      }
+
+      /* Image Gallery Layout */
+      .facility .image-gallery {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px; /* Adds space between the images */
+        width: 100%;
+      }
+
+      /* Ensure each item has the same height and width */
+      .facility-item {
+        border-radius: 10px;
+        position: relative;
+        width: 33%; /* Each image will take 30% of the container width */
+        display: flex; /* Ensures the content is contained within the item */
+        align-items: center; /* Vertically aligns the content */
+        justify-content: center; /* Horizontally centers the content */
+        overflow: hidden;
+      }
+
+      /* Style for images inside each facility item */
+      .facility-item img {
+        width: 100%;
+        object-fit: cover; /* Ensures the image covers the container without stretching */
+        border-radius: 10px; /* Rounded corners */
+        height: 400px; /* Set a fixed height for each item */
+      }
+
+      .video-item {
+        width: 100%; /* Adjust the width as per your layout */
+        height: 100%; /* Adjust the height to match the desired container size */
+      }
+
+      .video-item video {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0; /* Initially hide all videos */
+        transition: opacity 0.5s ease; /* Smooth fade transition */
+      }
+
+      .video-item video.active {
+        opacity: 1; /* Show the active video */
+      }
+
+      /* testimonials section */
+      .testimonials {
+        background: #f9f9f9;
+        text-align: center;
+        position: relative;
+        padding-bottom: 80px;
+      }
+
+      .testimonials .testimonial-wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .testimonials .container {
+        /* display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* max-width: 1200px; */
+        /* margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      overflow: hidden; */
+        width: 100%;
+        max-width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .testimonials .testimonials-heading {
+        align-self: end;
+        font-size: 7rem;
+        font-weight: bold;
+        color: transparent;
+        -webkit-text-stroke: 2px rgba(30, 60, 114, 0.2);
+        z-index: 1;
+        white-space: nowrap;
+        pointer-events: none;
+        margin: 0;
+      }
+
+      .testimonials h2 {
+        font-size: 2.5rem;
+        margin-top: 0;
+        color: #0364a6;
+      }
+
+      .testimonial-container {
+        width: 80%;
+        max-width: 90%;
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        min-height: 16rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .testimonial-content {
+        display: none;
+      }
+
+      .testimonial-content.active {
+        display: block;
+        padding-left: 2rem;
+        width: 100%;
+      }
+
+      .testimonial-name {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #cc147f;
+      }
+
+      .testimonial-text {
+        font-size: 1.2rem;
+        color: #555;
+        margin: 20px 0;
+      }
+
+      .arrow {
+        background: none;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #1e3c72;
+        transition: color 0.3s ease;
+        padding: 10px;
+        top: 50%;
+        z-index: 1;
+      }
+
+      .arrow:hover {
+        color: #cc147f;
+      }
+
+      /* Modal Styling */
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        overflow: hidden;
+        z-index: 9999;
+        /* Ensures modal stays on top */
+      }
+
+      .modal.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal-content {
+        background: white;
+        padding: 50px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 700px;
+        width: 95%;
+        position: relative;
+      }
+
+      .modal-container {
+        display: flex;
+      }
+
+      /* Get a Quote Section */
+      .quote {
+        padding: 80px 10%;
+        background: linear-gradient(to right, #f9f9f9, #e6ecf5);
+        display: flex;
+        justify-content: center;
+      }
+
+      .quote .container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 1000px;
+        gap: 60px;
+      }
+
+      .quote-text {
+        flex: 1;
+        text-align: left;
+      }
+
+      .quote-text h2 {
+        font-size: 2.5rem;
+        background: linear-gradient(to right, #d3509c, #0364a6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
+      }
+
+      .quote-text p {
+        font-size: 1.1rem;
+        color: #555;
+        line-height: 1.6;
+      }
+
+      .quote-form {
+        flex: 1;
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 450px;
+        width: 100%;
+      }
+
+      .quote-form form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .quote-form input,
+      .quote-form textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: 0.3s ease-in-out;
+        box-sizing: border-box;
+      }
+
+      .quote-form input:focus,
+      .quote-form textarea:focus {
+        border-color: #1e3c72;
+        outline: none;
+        box-shadow: 0 0 5px rgba(30, 60, 114, 0.3);
+      }
+
+      .quote-form textarea {
+        height: 120px;
+        resize: none;
+      }
+
+      .quote-form button {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #d3509c, #0364a6);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
+      }
+
+      .quote-form button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Footer Section */
+      footer {
+        background: #1e3c72;
+        color: #fff;
+        padding: 80px 0;
+      }
+
+      footer .container {
+        flex-direction: column;
+      }
+
+      .footer-logo {
+        display: flex;
+        justify-content: center;
+        /* Centers the logo horizontally */
+        align-items: center;
+        /* Centers the logo vertically */
+        margin-bottom: 20px;
+        /* Adds some spacing below the logo */
+      }
+
+      .footer-logo img {
+        max-width: 150px;
+        /* Adjust the size of the logo */
+        height: auto;
+        /* Maintains aspect ratio */
+        object-fit: contain;
+        /* Ensures the image scales properly */
+      }
+
+      .footer-content {
+        margin-bottom: 5rem;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      footer h3 {
+        font-size: 1.2rem;
+        line-height: 1.3;
+        text-transform: uppercase;
+        letter-spacing: 0.25rem;
+        color: #cc147f;
+        margin-bottom: 2.1rem;
+      }
+
+      footer h3::before {
+        content: "/ ";
+      }
+
+      footer .contact-email {
+        font-size: 2rem;
+        color: #fff;
+        text-decoration: none;
+        margin: 0;
+      }
+
+      footer .contact-phone {
+        font-size: 1.5rem;
+        line-height: 1.5;
+      }
+
+      footer .contact-address {
+        font-size: 1.5rem;
+        line-height: 1rem;
+      }
+
+      footer .social a:hover {
+        color: #cc147f;
+      }
+
+      .footer-social {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 20px;
+      }
+
+      footer .contact h3,
+      footer .social h3 {
+        font-size: 1.2rem;
+        line-height: 1.3;
+        letter-spacing: 0.25rem;
+        margin-bottom: 2rem;
+      }
+
+      footer .social a {
+        font-size: 3rem;
+        color: #fff;
+      }
+
+      .copyright {
+        text-align: center;
+        margin-top: 80px;
+        font-size: 1rem;
+        align-self: flex-start;
+      }
+
+      .footer-watermark {
+        position: absolute;
+        font-size: 12rem;
+        font-weight: 900;
+        color: rgba(255, 255, 255, 0.02);
+        letter-spacing: 2rem;
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+        }
+
+        .bento-grid {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+
+        .product-item.large,
+        .product-item.wide {
+          grid-column: span 1;
+        }
+
+        .product-item.tall {
+          grid-row: span 1;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header Section -->
+    <header>
+      <div class="header-container">
+        <ul class="header-contact">
+          <li>janata@gmail.com</li>
+          <li>+91-977-587-3874</li>
         </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="container">
-      <div class="company-name">JANATHA</div>
-      <div class="hero-content">
-        <h1>Engineered for the Perfect Catch.</h1>
-        <p>Premium fishing nets engineered for durability, efficiency, and the perfect catch—every time.</p>
+        <ul class="header-social">
+          <li>
+            <a
+              href="https://instagram.com/kinwitstechnologies"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://linkedin.com/company/kinwits"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+        </ul>
       </div>
-      <!-- <button class="quote-btn" onclick="document.getElementById('quote').scrollIntoView({ behavior: 'smooth' })">
-        GET A QUOTE
-      </button> -->
-    </div>
-  </section>
-
-  <!-- About Us Section -->
-  <section id="about" class="about">
-    <div class="container">
-      <h2>ABOUT US</h2>
-      <div class="about-section">
-        <div class="text">
-          <h3>Why We Do This</h3>
-          <p>Fishing is more than a job—it’s a way of life. We build high-quality, durable fishing nets designed to
-            withstand the toughest waters, helping our customers fish smarter and more efficiently.</p>
+      <div class="container">
+        <div class="logo">
+          <img src="jfn_crop_logo.png" alt="Janatha Fish Nets Logo" />
+          <div class="company-name">
+            <h3>Janatha</h3>
+            <h3>Fishnet</h3>
+          </div>
+          <h4 class="company-tag">Tough Nets For Rough Waters</h4>
         </div>
-        <div class="image">
-          <img src="boat2.jpg" alt="Fishing net in action">
-        </div>
-      </div>
-
-      <div class="about-section">
-        <div class="image">
-          <img src="boat2.jpg" alt="Durable fishing net">
-        </div>
-        <div class="text">
-          <h3>Our Commitment</h3>
+        <nav>
           <ul>
-            <li><strong>Strength & Durability</strong> – Nets built to last, season after season.</li>
-            <li><strong>Precision Craftsmanship</strong> – Designed with expertise for maximum performance.</li>
-            <li><strong>Customer First</strong> – Reliable gear, backed by people who care.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="about-section">
-        <div class="text">
-          <h3>How We Make a Difference</h3>
-          <p>From small-scale fishers to large commercial fleets, we provide solutions that keep the industry moving
-            forward. Because when your nets work better, so do you.</p>
-        </div>
-        <div class="image">
-          <img src="boat2.jpg" alt="Fishermen using our nets">
-        </div>
-      </div>
-      <div class="team-section">
-        <h2>Meet the Team</h2>
-        <div class="team-cards">
-          <div class="team-card">
-            <img src="boat2.jpg" alt="Team Member 1">
-            <h3>John Doe</h3>
-            <p>Founder & CEO</p>
-          </div>
-          <div class="team-card">
-            <h3>Jane Smith</h3>
-            <p>Lead Engineer</p>
-            <img src="boat2.jpg" alt="Team Member 2">
-          </div>
-          <div class="team-card">
-            <img src="boat2.jpg" alt="Team Member 3">
-            <h3>Mike Johnson</h3>
-            <p>Operations Manager</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Products Section -->
-  <section id="products" class="products">
-    <div class="container">
-      <h2>PRODUCTS</h2>
-      <div class="bento-grid">
-        <div class="grid-item large" onclick="expandItem(this)">
-          <h3>Product 1</h3>
-        </div>
-        <div class="grid-item medium" onclick="expandItem(this)">
-          <h3>Product 2</h3>
-        </div>
-        <div class="grid-item small" onclick="expandItem(this)">
-          <h3>Product 3</h3>
-        </div>
-        <div class="grid-item medium" onclick="expandItem(this)">
-          <h3>Product 4</h3>
-        </div>
-        <div class="grid-item large" onclick="expandItem(this)">
-          <h3>Product 5</h3>
-        </div>
-        <div class="grid-item small" onclick="expandItem(this)">
-          <h3>Product 6</h3>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section id="testimonials" class="testimonials">
-    <div class="container">
-      <h2>What Our Customers Say</h2>
-      <button class="arrow left-arrow" aria-label="Previous Testimonial" onclick="prevTestimonial()" id="leftArrow"
-        disabled>
-        <i class="fas fa-chevron-left"></i>
-      </button>
-      <div class="testimonial-wrapper">
-        <div class="testimonial-grid" id="testimonial-slider">
-          <div class="testimonial-item">
-            <div class="testimonial-content">
-              <p>"Janatha Fish Nets are the best in the market! Highly durable and eco-friendly."</p>
-              <span>- Customer A</span>
-            </div>
-          </div>
-          <div class="testimonial-item">
-            <div class="testimonial-content">
-              <p>"Great customer service and quality products. Highly recommended!"</p>
-              <span>- Customer B</span>
-            </div>
-          </div>
-          <div class="testimonial-item">
-            <div class="testimonial-content">
-              <p>"The nets are strong and reliable. Perfect for professional fishing."</p>
-              <span>- Customer C</span>
-            </div>
-          </div>
-          <div class="testimonial-item">
-            <div class="testimonial-content">
-              <p>"Excellent quality and timely delivery. Very satisfied with the service."</p>
-              <span>- Customer D</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="arrow right-arrow" aria-label="Next Testimonial" onclick="nextTestimonial()" id="rightArrow">
-        <i class="fas fa-chevron-right"></i>
-      </button>
-    </div>
-  </section>
-
-  <!-- Get a Quote Section -->
-  <section id="quote" class="quote">
-    <div class="container">
-
-      <!-- Left Side - Text -->
-      <div class="quote-text">
-        <h2>Get a Quote</h2>
-        <p>Looking for high-quality fishing nets? Tell us what you need, and we'll get back to you with a tailored
-          solution.</p>
-      </div>
-
-      <!-- Right Side - Form -->
-      <div class="quote-form">
-        <form>
-          <input type="text" placeholder="Your Name" maxlength="50" required
-            oninvalid="this.setCustomValidity('Oops! We need your name to reach out.')"
-            oninput="this.setCustomValidity('')">
-
-          <input type="email" placeholder="Your Email" maxlength="50" required
-            oninvalid="this.setCustomValidity('Please enter a valid email so we can contact you.')"
-            oninput="this.setCustomValidity('')">
-
-          <textarea placeholder="Your Message" maxlength="500" required></textarea>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer Section -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo" id="contact">
-          <h1>JANATHA</h>
-        </div>
-        <div class="contact" id="contact">
-          <h3>CONTACT US</h3>
-          <p class="contact-email">info@janathafishnets.com</p>
-          <p class="contact-phone">+123 456 7890</p>
-          <p class="contact-address">123 Fishing Lane, Coastal City</p>
-        </div>
-        <div class="social">
-          <h3>FOLLOW US</h3>
-          <ul class="header-social">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
             <li>
-              <a href="https://instagram.com/kinwitstechnologies" target="_blank" rel="noopener noreferrer"
-                aria-label="Instagram">
-                <i class="fab fa-instagram"></i>
-              </a>
+              <a href="#" class="menu-item" id="products-menu">Products</a>
+              <ul class="dropdown">
+                <li><a href="#">Fishing Nets</a></li>
+                <li><a href="#">Trawling Nets</a></li>
+                <li><a href="#">Gill Nets</a></li>
+              </ul>
             </li>
-            <li>
-              <a href="https://linkedin.com/company/kinwits" target="_blank" rel="noopener noreferrer"
-                aria-label="LinkedIn">
-                <i class="fab fa-linkedin"></i>
-              </a>
-            </li>
+            <li><a href="#" id="facility-menu">Our Facility</a></li>
+            <li><a href="#footer">Contact</a></li>
           </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="video-container">
+        <video src="vid1.mp4" class="video-slide active" autoplay muted loop>
+          Browser does not support the video format.
+        </video>
+        <video src="vid2.mp4" class="video-slide" autoplay muted loop>
+          Browser does not support the video format.
+        </video>
+        <video src="vid3.mp4" class="video-slide" autoplay muted loop>
+          Browser does not support the video format.
+        </video>
+      </div>
+
+      <div class="hero-content">
+        <h1 id="hero-heading">Engineering Superior Solutions.</h1>
+        <div class="video-controls">
+          <button id="prevBtn">❮</button>
+          <button id="nextBtn">❯</button>
+        </div>
+        <button id="openQuoteModal" class="quote-btn">Get a Quote</button>
+        <!-- Added Button Below Controls -->
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <h2 class="about-heading">ABOUT US</h2>
+        <div class="about-section">
+          <div class="image">
+            <img src="about_us.jpg" alt="Durable fishing net" />
+          </div>
+          <div class="text">
+            <h3>WHO WE ARE</h3>
+            <p>
+              Janatha Fishnet, a proud part of the Janatha Group, is committed
+              to empowering communities through quality craftsmanship and
+              sustainable practices. Operating from our state-of-the-art 15-acre
+              facility in Dabekatte, Udupi District, Karnataka, we manufacture
+              premium fishing nets designed for durability, efficiency, and
+              performance. With over 70% of our workforce composed of skilled
+              women, we foster inclusivity and economic growth. Our meticulous
+              production process ensures every net meets the highest quality
+              standards through automated and manual checks. We prioritize
+              eco-friendly solutions, reducing environmental impact while
+              promoting responsible fishing.
+            </p>
+            <p>
+              At Janatha Fishnet, we don’t just deliver products—we build trust,
+              reliability, and lasting partnerships in the global fishing
+              industry.
+            </p>
+          </div>
+        </div>
+        <div class="vision-mission">
+          <div class="content">
+            <h2 id="heading">Vision</h2>
+            <div class="divider"></div>
+            <p id="text">
+              Lead the world in sustainable fishing solutions, driving
+              innovation, supporting communities, and protecting aquatic
+              ecosystems for future generations.
+            </p>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <h2 id="count1" data-target="500">0</h2>
+              <p>Projects Completed</p>
+            </div>
+            <div class="stat">
+              <h2 id="count2" data-target="1200">0</h2>
+              <p>Happy Clients</p>
+            </div>
+            <div class="stat">
+              <h2 id="count3" data-target="50">0</h2>
+              <p>Years of Experience</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-section">
+          <h2>Leadership</h2>
+          <div class="team-cards">
+            <div class="team-card">
+              <img src="promoters/prashanth.jpg" alt="Team Member 1" />
+              <h3>PRASHANTH KUNDER</h3>
+              <p>Managing Director</p>
+            </div>
+            <div class="team-card">
+              <h3>ANAND KUNDER</h3>
+              <p>Chief Managing Director</p>
+              <img src="promoters/kunder.jpg" alt="Team Member 2" />
+            </div>
+            <div class="team-card">
+              <img src="promoters/rakshith.jpg" alt="Team Member 3" />
+              <h3>RAKSHITH KUNDER</h3>
+              <p>Executive Director</p>
+            </div>
+          </div>
+          <div class="leadership-description">
+            Our leadership team brings a wealth of experience and a passion for
+            innovation, driving our company toward a brighter future.
+          </div>
         </div>
       </div>
-      <div class="copyright">
-        <span>
-          Copyright ©
-          <script>document.write(new Date().getFullYear());</script> All rights reserved by <a
-            href="https://janatha.com" target="_blank" rel="noopener noreferrer">JANATHA</a><i class="fa fa-heart"
-            aria-hidden="true"></i>
-        </span>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products-section" style="display: none">
+      <div class="container">
+        <h2 class="products-heading">PRODUCTS</h2>
+        <div class="nets-content">
+          <h3>Fishing Nets</h3>
+        </div>
+        <div class="bento-grid" id="nets-grid">
+          <div class="grid-item">
+            <img src="products/nets/hdpe-bg.jpg" alt="HDPE Nets" />
+            <h3 class="net-name">HDPE Fishnets</h3>
+            <p class="net-description">
+              High-Density Polyethylene fishnets are ideal for commercial
+              deep-sea fishing, offering strength, durability, and resistance to
+              harsh marine conditions.
+            </p>
+            <div class="advantages">
+              <ul>
+                <li>
+                  Resistant to saltwater corrosion, ensuring long-lasting
+                  durability.
+                </li>
+                <li>
+                  UV resistant, maintaining strength and performance even under
+                  direct sunlight.
+                </li>
+                <li>
+                  Lightweight yet strong, reducing strain on the crew and
+                  improving operational efficiency.
+                </li>
+                <li>
+                  Requires minimal maintenance, saving both time and costs.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="grid-item">
+            <img src="products/nets/multinet-view2.jpg" alt="Multi-Filament" />
+            <h3 class="net-name">Nylon Multifilament Fishnets</h3>
+            <p class="net-description">
+              Nylon multifilament fishnets are made from high-quality nylon
+              fibers, offering strength, flexibility, and durability.
+            </p>
+            <div class="advantages">
+              <ul>
+                <li>
+                  Nylon multifilament fishnets excel in trawling operations,
+                  offering excellent durability and performance in deep-sea
+                  fishing.
+                </li>
+                <li>
+                  Perfect for gillnetting, the nylon material minimizes
+                  entanglement and ensures reliable fish capture in varying
+                  water conditions.
+                </li>
+                <li>
+                  Designed for purse seine fishing, these nets allow for
+                  efficient capture of fish species at the water’s surface.
+                </li>
+                <li>
+                  Nylon multifilament nets minimize harm to fish, making them
+                  ideal for catch-and-release or harvesting high-value species.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="grid-item">
+            <img src="products/nets/mononet-bg.jpg" alt="Mono-Filament" />
+            <h3 class="net-name">Nylon Mono-filament Fishnets</h3>
+            <p class="net-description">
+              With fewer knots than multifilament nets, they reduce drag and
+              resist entanglement, making them ideal for precision fishing in
+              commercial applications.
+            </p>
+            <div class="advantages">
+              <ul>
+                <li>
+                  Highly effective in gillnetting, offering a smoother surface
+                  that reduces drag and minimizes fish escape.
+                </li>
+                <li>
+                  The smooth design reduces resistance in the water, making
+                  these nets ideal for efficient trawling operations.
+                </li>
+                <li>
+                  With their low-visibility design, these nets are perfect for
+                  seine fishing, allowing for efficient capture of fish without
+                  disturbing the surrounding environment.
+                </li>
+                <li>
+                  Suitable for both shallow and deep waters, providing
+                  flexibility in diverse fishing environments.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="floats-content">
+          <h3>Floats</h3>
+        </div>
+        <div class="bento-grid" id="floats-grid">
+          <div class="grid-item">
+            <img src="products/nets/hdpe-bg.jpg" alt="HDPE Nets" />
+            <h3 class="net-name">DS2 Floats</h3>
+            <p class="net-description">
+              DS2 Floats are durable, high-quality floating devices designed for
+              maximum buoyancy in fishing nets, ensuring long-lasting
+              performance in saltwater and other aquatic environments.
+            </p>
+            <div class="advantages">
+              <ul>
+                <li>
+                  DS2 Floats provide optimal buoyancy for gillnets, ensuring
+                  proper net positioning for effective fish capture in varying
+                  water depths.
+                </li>
+                <li>
+                  Perfect for seine nets, these floats maintain stability and
+                  buoyancy, allowing for smooth deployment and retrieval in both
+                  shallow and deep waters.
+                </li>
+                <li>
+                  DS2 Floats offer reliable support for trawl nets, keeping them
+                  properly positioned in the water for maximum catch efficiency.
+                </li>
+                <li>
+                  Their lightweight design makes handling easy, while their
+                  durability ensures long-term use in challenging marine
+                  environments.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="grid-item">
+            <img src="products/nets/hdpe-bg.jpg" alt="HDPE Nets" />
+            <h3 class="net-name">PVC Floats</h3>
+            <p class="net-description">
+              Our PVC floats are durable, lightweight, and corrosion-resistant,
+              making them ideal for a wide range of aquatic applications.
+            </p>
+            <div class="advantages">
+              <ul>
+                <li>
+                  PVC floats provide reliable buoyancy and stability for
+                  floating docks, ensuring they remain stable and functional in
+                  various water conditions.
+                </li>
+                <li>
+                  Perfect for marina platforms, due to their durability and
+                  resistance to saltwater corrosion.
+                </li>
+                <li>
+                  PVC floats are commonly used in navigation buoys, offering
+                  buoyancy and visibility for safe passage in water bodies.
+                </li>
+                <li>
+                  PVC floats are a reliable choice for emergency flotation
+                  devices, ensuring safety and stability in critical situations.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="twine-content">
+          <h3>Twines</h3>
+        </div>
+        <div class="bento-grid" id="twine-grid">
+          <div class="grid-item">
+            <img src="products/nets/hdpe-bg.jpg" alt="HDPE Nets" />
+            <h3 class="net-name">Twine</h3>
+            <p class="net-description">
+              Twine is a strong, flexible cord made from various materials,
+              including cotton, jute, nylon, and polypropylene. The quality of
+              twine depends on its material, thickness, and construction (e.g.,
+              braided or twisted).
+            </p>
+            <div class="advantages">
+              <ul>
+                <li>
+                  Used to make fish traps, twine’s strength ensures that traps
+                  maintain their shape and function even under the weight of
+                  caught fish.
+                </li>
+                <li>
+                  Twine plays a critical role in securing fish pens in
+                  aquaculture, providing strong and reliable support for aquatic
+                  farming operations.
+                </li>
+                <li>
+                  Twine is used in buoy ropes to mark and anchor fishing gear,
+                  ensuring nets and equipment stay in place during operations.
+                </li>
+                <li>
+                  Available in multiple materials (cotton, jute, nylon,
+                  polypropylene), twine can be adapted to different fishing
+                  environments and tasks.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <p class="footer-watermark">JANATHA</p>
+    </section>
+
+    <section class="facility" id="facility-section" style="display: none">
+      <div class="container">
+        <h2 class="facility-heading">OUR FACILITY</h2>
+        <div class="facility-gallery">
+          <p class="facility-description">
+            Our factory is staffed by a talented and diverse team of
+            professionals who are experts in their respective fields. At Janatha
+            Fishnets, we believe in providing equal opportunities for all,
+            empowering women in the manufacturing industry and contributing to
+            their professional growth.
+          </p>
+          <div class="image-gallery">
+            <div class="facility-item">
+              <img src="facility/fa-image1.jpg" alt="Facility Image 1" />
+            </div>
+            <div class="facility-item">
+              <img src="facility/fa-image2.jpg" alt="Facility Image 2" />
+            </div>
+            <div class="facility-item">
+              <img src="facility/fa-image3.jpg" alt="Facility Image 3" />
+            </div>
+          </div>
+
+          <div class="video-item">
+            <video
+              src="facility/facility1-video.mp4"
+              autoplay
+              muted
+              loop
+            ></video>
+            <!-- <video
+              src="facility/facility2-video.mp4"
+              autoplay
+              muted
+              loop
+            ></video>
+            <video
+              src="facility/facility3-video.mp4"
+              autoplay
+              muted
+              loop
+            ></video> -->
+          </div>
+          <p class="facility-description">
+            Our state-of-the-art facility is equipped with the latest machinery
+            and technology to produce high-quality fishnets. We employ
+            cutting-edge techniques like laser cutting, precision weaving, and
+            advanced coatings to enhance durability, reduce tangling, and
+            improve knot strength.
+          </p>
+          <div class="image-gallery">
+            <div class="facility-item">
+              <img src="facility/fa-image4.jpg" alt="Facility Image 4" />
+            </div>
+            <div class="facility-item">
+              <img src="facility/fa-image5.jpg" alt="Facility Image 5" />
+            </div>
+            <div class="facility-item">
+              <img src="facility/fa-image7.jpg" alt="Facility Image 6" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <h2 class="testimonials-heading">FEEDBACK</h2>
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial-wrapper">
+          <button
+            class="arrow left-arrow"
+            aria-label="Previous Testimonial"
+            onclick="changeTestimonial('prev')"
+            id="leftArrow"
+          >
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="testimonial-container">
+            <div class="testimonial-content active">
+              <p class="testimonial-text">
+                "This service has changed my life! The team is incredibly
+                professional, and the results were amazing. Highly recommend!"
+              </p>
+              <p class="testimonial-name">John Doe</p>
+            </div>
+            <div class="testimonial-content">
+              <p class="testimonial-text">
+                "A wonderful experience from start to finish. The customer
+                service was top-notch, and the product exceeded my
+                expectations."
+              </p>
+              <p class="testimonial-name">Jane Smith</p>
+            </div>
+            <div class="testimonial-content">
+              <p class="testimonial-text">
+                "I couldn't be happier with the outcome. The attention to detail
+                was remarkable, and I would definitely use this service again!"
+              </p>
+              <p class="testimonial-name">Mike Johnson</p>
+            </div>
+          </div>
+          <button
+            class="arrow right-arrow"
+            aria-label="Next Testimonial"
+            onclick="changeTestimonial('next')"
+            id="rightArrow"
+          >
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Get a Quote Section -->
+    <div id="quoteModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-container">
+          <div class="quote-text">
+            <h2>Get a Quote</h2>
+            <p>
+              Looking for high-quality fishing nets? Tell us what you need, and
+              we'll get back to you with a tailored solution.
+            </p>
+          </div>
+          <div class="quote-form">
+            <form>
+              <input
+                type="text"
+                placeholder="Your Name"
+                maxlength="50"
+                required
+              />
+              <input
+                type="email"
+                placeholder="Your Email"
+                maxlength="50"
+                required
+              />
+              <textarea
+                placeholder="Your Message"
+                maxlength="500"
+                required
+              ></textarea>
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-  </footer>
 
-  <!-- JavaScript for Sticky Header -->
-  <script>
-    const header = document.querySelector('header');
+    <!-- Footer Section -->
+    <footer>
+      <div class="container">
+        <div class="footer-content" id="footer">
+          <div class="footer-logo" id="contact">
+            <img src="jfn_logo.jpg" alt="Janatha Fish Nets Logo" />
+          </div>
+          <div class="contact" id="contact">
+            <h3>CONTACT US</h3>
+            <p class="contact-email">info@janathafishnets.com</p>
+            <p class="contact-phone">+123 456 7890</p>
+            <p class="contact-address">123 Fishing Lane, Coastal City</p>
+          </div>
+          <div class="social">
+            <h3>FOLLOW US</h3>
+            <ul class="footer-social">
+              <li>
+                <a
+                  href="https://instagram.com/kinwitstechnologies"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://linkedin.com/company/kinwits"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <i class="fab fa-linkedin"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <span>
+            Copyright ©
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            All rights reserved by
+            <a
+              href="https://janatha.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >JANATHA</a
+            ><i class="fa fa-heart" aria-hidden="true"></i>
+          </span>
+        </div>
+        <p class="footer-watermark">JANATHA</p>
+      </div>
+    </footer>
 
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 400) { // Adjust the scroll threshold as needed
-        header.classList.add('sticky');
-      } else {
-        header.classList.remove('sticky');
+    <!-- JavaScript for Sticky Header -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const productMenu = document.getElementById("products-menu");
+        const facilityMenu = document.getElementById("facility-menu"); // Adjust selector if needed
+        const sections = document.querySelectorAll("section"); // Selects all sections
+        const facilitySection = document.getElementById("facility-section");
+        const productsSection = document.getElementById("products-section");
+
+        function hideSections() {
+          sections.forEach((section) => {
+            section.style.display = "none";
+          });
+        }
+
+        productMenu.addEventListener("click", function (e) {
+          e.preventDefault();
+          hideSections();
+          productsSection.style.display = "block";
+        });
+
+        facilityMenu.addEventListener("click", function (e) {
+          e.preventDefault();
+          hideSections();
+          facilitySection.style.display = "block";
+        });
+
+        const headerContainer = document.querySelector(".header-container");
+        const heroSection = document.querySelector(".hero");
+
+        const menuItem = document.getElementById("products-menu");
+        const dropdown = document.querySelector(".dropdown");
+        const dropdownItems = dropdown.querySelectorAll("li");
+
+        menuItem.addEventListener("click", function (event) {
+          event.preventDefault();
+
+          // Toggle dropdown visibility
+          if (dropdown.style.display === "flex") {
+            dropdown.style.display = "none";
+          } else {
+            dropdown.style.display = "flex";
+          }
+        });
+
+        // ✅ Close dropdown when clicking on any li
+        dropdownItems.forEach((item) => {
+          item.addEventListener("click", function (event) {
+            event.stopPropagation(); // Prevent bubbling up
+            dropdown.style.display = "none";
+          });
+        });
+
+        // ✅ Close dropdown if clicking outside
+        document.addEventListener("click", function (event) {
+          if (
+            !menuItem.contains(event.target) &&
+            !dropdown.contains(event.target)
+          ) {
+            dropdown.style.display = "none";
+          }
+        });
+
+        // Hide header-container when scrolling past hero section
+        window.addEventListener("scroll", () => {
+          const heroBottom = heroSection.getBoundingClientRect().bottom;
+          headerContainer.style.display = heroBottom < 0 ? "none" : "flex";
+        });
+
+        const modal = document.querySelector(".modal");
+        const openModalBtn = document.querySelector("#openQuoteModal"); // Adjust ID if needed
+
+        openModalBtn.addEventListener("click", function () {
+          modal.classList.add("show");
+          document.body.classList.remove("modal-open");
+        });
+
+        window.addEventListener("click", function (e) {
+          if (e.target === modal) {
+            modal.classList.remove("show");
+          }
+        });
+      });
+
+      const videos = document.querySelectorAll(".video-slide");
+      const heroHeading = document.getElementById("hero-heading");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      let currentVideoIndex = 0;
+
+      const headings = [
+        "Engineering Superior Solutions and Products.",
+        "For Enhanced Success.",
+        "With Future-Ready Fibers.",
+      ];
+
+      // Function to change video and update text
+      function changeVideo(index) {
+        videos.forEach((video, i) => {
+          video.classList.toggle("active", i === index);
+        });
+
+        heroHeading.style.opacity = 0; // Fade out
+        setTimeout(() => {
+          heroHeading.textContent = headings[index]; // Update text
+          heroHeading.style.opacity = 1; // Fade in
+        }, 300); // Delay matches transition speed
       }
-    });
 
-    let currentIndex = 0;
-    const testimonials = document.querySelectorAll(".testimonial-item");
-    const slider = document.getElementById("testimonial-slider");
-    const leftArrow = document.getElementById("leftArrow");
-    const rightArrow = document.getElementById("rightArrow");
-    const testimonialWrapper = document.querySelector(".testimonial-wrapper");
+      // Auto-switch every 10 seconds
+      setInterval(() => {
+        currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+        changeVideo(currentVideoIndex);
+      }, 10000);
 
-    // Get testimonial width dynamically
-    function getMoveDistance() {
-      return testimonials[0].offsetWidth + 40; // Width + gap
-    }
+      // Manual navigation
+      nextBtn.addEventListener("click", () => {
+        currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+        changeVideo(currentVideoIndex);
+      });
 
-    function updateSlider() {
-      let moveDistance = getMoveDistance();
-      let maxIndex = testimonials.length - Math.floor(testimonialWrapper.offsetWidth / moveDistance);
+      prevBtn.addEventListener("click", () => {
+        currentVideoIndex =
+          (currentVideoIndex - 1 + videos.length) % videos.length;
+        changeVideo(currentVideoIndex);
+      });
 
-      slider.style.transform = `translateX(-${currentIndex * moveDistance}px)`;
+      // Initialize first text
+      heroHeading.textContent = headings[currentVideoIndex];
 
-      leftArrow.disabled = currentIndex === 0;
-      rightArrow.disabled = currentIndex >= maxIndex;
-    }
+      const heading = document.getElementById("heading");
+      const text = document.getElementById("text");
+      const divider = document.querySelector(".divider");
 
-    function nextTestimonial() {
-      let moveDistance = getMoveDistance();
-      let maxIndex = testimonials.length - Math.floor(testimonialWrapper.offsetWidth / moveDistance);
+      const visionText =
+        "Lead the world in sustainable fishing solutions, driving innovation, supporting communities, and protecting aquatic ecosystems for future generations.";
+      const missionText =
+        "Empower the fishing community with high-quality, cost-effective nets, delivering innovative solutions that maximize customer value.";
 
-      if (currentIndex < maxIndex) {
-        currentIndex++;
-        updateSlider();
+      let isVision = true;
+
+      setInterval(() => {
+        heading.classList.add("slide-out");
+        text.classList.add("slide-out");
+
+        setTimeout(() => {
+          if (isVision) {
+            heading.textContent = "Mission";
+            text.textContent = missionText;
+          } else {
+            heading.textContent = "Vision";
+            text.textContent = visionText;
+          }
+
+          isVision = !isVision;
+
+          heading.classList.remove("slide-out");
+          text.classList.remove("slide-out");
+          heading.classList.add("slide-in");
+          text.classList.add("slide-in");
+
+          setTimeout(() => {
+            heading.classList.remove("slide-in");
+            text.classList.remove("slide-in");
+          }, 1000);
+        }, 1000); // Wait for slide-out before switching
+      }, 8000); // Slower transition every 5 seconds
+
+      function animateCounter(id, target) {
+        let count = 0;
+        let speed = Math.ceil(target / 100); // Controls speed of counting
+
+        function updateCount() {
+          if (count < target) {
+            count += speed;
+            if (count > target) count = target; // Ensure it stops exactly at target
+            document.getElementById(id).textContent = count;
+            requestAnimationFrame(updateCount);
+          }
+        }
+        updateCount();
       }
-    }
 
-    function prevTestimonial() {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateSlider();
+      // Trigger counters when the section comes into view
+      function startCounters() {
+        animateCounter("count1", 500);
+        animateCounter("count2", 1200);
+        animateCounter("count3", 50);
       }
-    }
 
-    // Initialize on load & update on resize
-    window.addEventListener("resize", updateSlider);
-    updateSlider();
+      // Run when the page loads
+      window.addEventListener("scroll", startCounters);
 
-    function expandItem(item) {
-      document.querySelectorAll('.grid-item').forEach(el => el.classList.remove('expanded'));
-      item.classList.add('expanded');
-    }
-    function collapseProduct(element) {
-      element.classList.remove('expanded');
-      element.onclick = function () { expandProduct(element); };
-    }
-  </script>
-</body>
+      let currentTestimonialIndex = 0;
+      const testimonials = document.querySelectorAll(".testimonial-content");
 
+      function changeTestimonial(direction) {
+        testimonials[currentTestimonialIndex].classList.remove("active");
+
+        if (direction === "next") {
+          currentTestimonialIndex =
+            (currentTestimonialIndex + 1) % testimonials.length;
+        } else if (direction === "prev") {
+          currentTestimonialIndex =
+            (currentTestimonialIndex - 1 + testimonials.length) %
+            testimonials.length;
+        }
+
+        testimonials[currentTestimonialIndex].classList.add("active");
+      }
+
+      function expandItem(item) {
+        document
+          .querySelectorAll(".grid-item")
+          .forEach((el) => el.classList.remove("expanded"));
+        document.querySelector(".bento-grid").classList.add("dimmed");
+        item.classList.add("expanded");
+      }
+
+      function collapseItem(event, button) {
+        event.stopPropagation();
+        let item = button.parentElement;
+        item.classList.remove("expanded");
+        document.querySelector(".bento-grid").classList.remove("dimmed");
+      }
+
+      const facilityVideos = document.querySelectorAll(".video-item video");
+      let facilityVideoIndex = 0;
+
+      // Function to show the next video
+      function showNextVideo() {
+        // Hide the current video
+        facilityVideos[facilityVideoIndex].classList.remove("active");
+
+        // Move to the next video
+        facilityVideoIndex = (facilityVideoIndex + 1) % facilityVideos.length;
+
+        // Show the next video
+        facilityVideos[facilityVideoIndex].classList.add("active");
+      }
+
+      // Initially show the first video
+      facilityVideos[facilityVideoIndex].classList.add("active");
+
+      // Switch videos every 10 seconds
+      setInterval(showNextVideo, 10000);
+    </script>
+  </body>
 </html>
